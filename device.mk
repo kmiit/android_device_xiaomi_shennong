@@ -9,10 +9,7 @@ $(call inherit-product, vendor/xiaomi/shennong/shennong-vendor.mk)
 
 # Enable virtual A/B.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-
-PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
-PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
 
 # Enable project quotas and casefolding for emulated storage without sdcardfs.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
@@ -43,6 +40,8 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     checkpoint_gc \
     otapreopt_script
+
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 1440
