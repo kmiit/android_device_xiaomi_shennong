@@ -69,6 +69,9 @@ vendor.display.scaling_source_opt_mode=4
 vendor.display.use_smooth_motion=0
 vendor.display.vds_allow_hwc=1
 
+# displayfeature (vendor)
+persist.sys.sf.native_mode=258
+
 # Dolby
 ro.vendor.audio.dolby.spatial.profile=dynamic
 
