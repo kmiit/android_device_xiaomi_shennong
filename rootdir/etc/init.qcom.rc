@@ -450,12 +450,6 @@ on post-fs-data
     # Create the directory used by qrtr-lookup
     mkdir /data/vendor/qrtr 0775 system system
 
-service nqnfcinfo /system/vendor/bin/nqnfcinfo
-    class late_start
-    group nfc
-    user system
-    oneshot
-
 service iop /system/vendor/bin/iop
     class main
     user root
@@ -665,19 +659,6 @@ service iprenew_wigig0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
-    class main
-    user wifi
-    group wifi system inet net_admin
-    capabilities NET_ADMIN
-    oneshot
-
-service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
-    user root
-    group root
-    disabled
-    oneshot
-
 service wifi_ftmd /system/vendor/bin/wifi_ftmd
     user system
     group system inet net_admin
@@ -711,12 +692,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service ssgqmigd /vendor/bin/ssgqmigd
-    class late_start
-    user radio
-    group radio gps system
-    socket ssgqmig seqpacket 0660 radio inet
-
 service mlid /vendor/bin/mlid
     class late_start
     user gps
@@ -733,11 +708,6 @@ service qcom-sh /vendor/bin/init.qcom.sh
     user root
     group root system radio
     oneshot
-# Remove since is deprecated but throws AVC denial.
-# service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
-#    class late_start
-#    user root
-#    oneshot
 
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
@@ -764,11 +734,6 @@ on property:sys.boot_completed=1
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
-
-service qvop-daemon /vendor/bin/qvop-daemon
-    class late_start
-    user system
-    group system drmrpc
 
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
@@ -896,16 +861,6 @@ service vendor.LKCore-rel /vendor/bin/LKCore
     user system
     group system log diag
 
-service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
-    class late_start
-    user system
-    group system
-
-service esepmdaemon /system/vendor/bin/esepmdaemon
-    class core
-    user system
-    group nfc
-
 on charger
     setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
@@ -943,16 +898,6 @@ service vendor.hbtp /vendor/bin/hbtp_daemon
      group system
      capabilities SYS_NICE
      disabled
-
-service chre /vendor/bin/chre
-    class late_start
-    user system
-    group system
-    socket chre seqpacket 0660 root system
-    shutdown critical
-
-on property:vendor.chre.enabled=0
-   stop chre
 
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
