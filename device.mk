@@ -44,6 +44,12 @@ PRODUCT_PACKAGES += \
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 1440
 
+# Boot control
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery \
+    libboot_control_qti
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.xiaomi \
