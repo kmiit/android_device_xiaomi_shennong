@@ -48,7 +48,8 @@ TARGET_BOOT_ANIMATION_RES := 1440
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
     android.hardware.boot-service.qti.recovery \
-    libboot_control_qti
+    libboot_control_qti \
+    libgptutils.pineapple
 
 # Health
 PRODUCT_PACKAGES += \
