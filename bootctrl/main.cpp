@@ -34,7 +34,7 @@ int main(int, char* argv[]) {
     std::shared_ptr<IBootControl> service = ndk::SharedRefBase::make<BootControl>();
 
     const std::string instance = std::string(BootControl::descriptor) + "/default";
-    if (service != NULL) {
+    if (service != nullptr) {
         auto status = AServiceManager_addService(service->asBinder().get(), instance.c_str());
         CHECK_EQ(status, STATUS_OK) << "Failed to add service " << instance << " " << status;
         LOG(INFO) << "IBootControl AIDL service running...";
