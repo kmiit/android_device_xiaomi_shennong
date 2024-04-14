@@ -65,6 +65,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
     fstab.qcom \
+    fstab.qcom.vendor_ramdisk \
     init.class_main.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
@@ -72,6 +73,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.sh \
     init.recovery.qcom.rc \
+    init.shennong.rc \
     init.target.rc \
     ueventd-odm.rc \
     ueventd.qcom.rc

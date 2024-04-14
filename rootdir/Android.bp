@@ -61,6 +61,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.shennong.rc",
+    src: "etc/init.shennong.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.target.rc",
     src: "etc/init.target.rc",
     sub_dir: "init/hw",
