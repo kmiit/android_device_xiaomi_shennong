@@ -11,11 +11,11 @@ $(call inherit-product, vendor/xiaomi/shennong/shennong-vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
+PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
+
 # Enable project quotas and casefolding for emulated storage without sdcardfs.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
@@ -50,6 +50,21 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti.recovery \
     libboot_control_qti \
     libgptutils.pineapple
+
+# Boot control HAL test app
+PRODUCT_PACKAGES_DEBUG += \
+    bootctl
+
+# Fastboot
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot-service.example_recovery
+
+# F2fs utilities
+PRODUCT_PACKAGES += \
+    sg_write_buffer \
+    f2fs_io \
+    check_f2fs
 
 # Health
 PRODUCT_PACKAGES += \
