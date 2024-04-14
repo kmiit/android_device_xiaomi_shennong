@@ -14,34 +14,16 @@
 // limitations under the License.
 //
 
-soong_config_module_type {
-  name: "bootctrl_cc_defaults",
-  module_type: "cc_defaults",
-  config_namespace: "bootctrl",
-  bool_variables: [
-      "target_supports_wearable",
-  ],
-  properties: [
-       "shared_libs",
-   ],
-}
-
-bootctrl_cc_defaults {
+cc_defaults {
     name: "android.hardware.boot-service.qti.common",
     relative_install_path: "hw",
     defaults: ["libboot_control_defaults"],
     vintf_fragments: ["boot-service.qti.xml"],
-    soong_config_variables: {
-        target_supports_wearable : {
-            shared_libs : [
-                "android.hardware.boot@1.1",
-            ],
-        },
-    },
     shared_libs: [
         "libboot_control_qti",
         "libbase",
         "libbinder_ndk",
+        "android.hardware.boot@1.1",
         "android.hardware.boot-V1-ndk",
     ],
     static_libs: [
