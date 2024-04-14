@@ -4,6 +4,7 @@ cc_library {
     recovery_available: true,
     shared_libs: [
         "android.hardware.boot@1.1",
+        "libgptutils.pineapple",
         "libbase",
         "libcutils",
         "liblog",
@@ -13,7 +14,6 @@ cc_library {
         "libboot_control",
         "libbootloader_message_vendor",
         "libfstab",
-        "libgptutils.pineapple",
     ],
     owner: "qti",
     cflags: [
