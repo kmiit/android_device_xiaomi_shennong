@@ -34,6 +34,21 @@ TARGET_BOOT_ANIMATION_RES := 1440
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Rootdir
+PRODUCT_PACKAGES += \
+    charger_fw_fstab.qti \
+    fstab.qcom \
+    init.class_main.sh \
+    init.qcom.class_core.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.rc \
+    init.qcom.sh \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd-odm.rc \
+    ueventd.qcom.rc
+
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 34
 
