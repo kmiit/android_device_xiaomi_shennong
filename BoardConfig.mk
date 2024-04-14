@@ -146,6 +146,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 # VINTF
 DEVICE_MANIFEST_SKUS := pineapple
 DEVICE_MANIFEST_PINEAPPLE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_pineapple.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml
 
 # Inherit from the proprietary version
