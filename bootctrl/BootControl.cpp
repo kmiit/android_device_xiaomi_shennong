@@ -74,6 +74,8 @@ static constexpr MergeStatus ToAIDLMergeStatus(HIDLMergeStatus status) {
             return MergeStatus::MERGING;
         case HIDLMergeStatus::CANCELLED:
             return MergeStatus::CANCELLED;
+        default:
+            return MergeStatus::NONE;
     }
 }
 
@@ -89,6 +91,8 @@ static constexpr HIDLMergeStatus ToHIDLMergeStatus(MergeStatus status) {
             return HIDLMergeStatus::MERGING;
         case MergeStatus::CANCELLED:
             return HIDLMergeStatus::CANCELLED;
+        default:
+            return HIDLMergeStatus::NONE;
     }
 }
 
