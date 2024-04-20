@@ -74,9 +74,6 @@
 # Modem
 /data/vendor/modem(/.*)?                                u:object_r:vendor_modem_data_file:s0
 
-# NFC
-/(vendor|system/vendor)/bin/hw/android\.hardware\.nqnfc-service\.nxp    u:object_r:hal_nfc_default_exec:s0
-
 # Ril
 /dev/smd8                                         u:object_r:vendor_radio_smd_device:s0
 
