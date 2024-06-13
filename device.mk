@@ -123,5 +123,4 @@ PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
 # Vendor API
-BOARD_API_LEVEL := 34
 BOARD_SHIPPING_API_LEVEL := 34
