@@ -127,3 +127,9 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Vendor API
 BOARD_SHIPPING_API_LEVEL := 34
+
+# WiFi firmware symlinks
+PRODUCT_PACKAGES += \
+    firmware_wlanmdsp.otaupdate_symlink \
+    firmware_wlan_mac.bin_symlink \
+    firmware_WCNSS_qcom_cfg.ini_symlink
