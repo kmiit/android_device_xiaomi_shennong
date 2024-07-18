@@ -316,7 +316,6 @@ vendor/lib64/soundfx/libeffectproxy.so
 vendor/lib64/soundfx/libhwdap.so
 vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libmisoundfx_n2.so
-vendor/lib64/soundfx/libozoprocessing.so
 vendor/lib64/soundfx/libquasar.so
 vendor/lib64/soundfx/libreverbwrapper.so
 vendor/lib64/soundfx/libshoebox.so
@@ -2608,17 +2607,6 @@ vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libFlacSwDec.so
 vendor/lib64/libdsd2pcm.so
-
-# ozoaudio
-odm/etc/ozosdk.license
-vendor/bin/hw/vendor.ozoaudio.notify@1.0-service
-vendor/etc/init/ozonotify-1.0-service.rc
-vendor/etc/vintf/manifest/ozonotify-1.0.xml
-vendor/lib64/com.android.ozoaudio.notify-V1-ndk.so
-vendor/lib64/libav_ozoencoder.so
-vendor/lib64/libozoaudio.so
-vendor/lib64/libozoaudioutils.so
-vendor/lib64/libozocapability.so
 
 # Perf
 vendor/bin/hw/vendor.qti.hardware.iop@2.0-service

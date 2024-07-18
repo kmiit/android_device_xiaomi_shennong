@@ -73,7 +73,6 @@
         <interface>
             <name>IComponentStore</name>
             <instance>dolby</instance>
-            <instance>ozoaudio</instance>
         </interface>
     </hal>
     <hal format="aidl" optional="true">
@@ -133,13 +132,6 @@
         <name>android.se.omapi</name>
         <interface>
             <name>ISecureElementService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>com.android.ozoaudio.notify</name>
-        <interface>
-            <name>IOzoNotify</name>
             <instance>default</instance>
         </interface>
     </hal>

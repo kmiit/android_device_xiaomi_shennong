@@ -1,6 +1,5 @@
 # Audio
 /dev/xlog                                 u:object_r:sound_device:s0
-/(vendor|system/vendor)/bin/hw/vendor\.ozoaudio\.notify@1\.0-service                      u:object_r:hal_ozonotify_default_exec:s0
 
 # Battery secret
 /(vendor|system/vendor)/bin/batterysecret u:object_r:batterysecret_exec:s0
