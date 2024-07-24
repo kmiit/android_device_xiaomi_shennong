@@ -32,8 +32,7 @@ public class EdgeSuppressionSettingsFragment extends PreferenceFragment implemen
         OnMainSwitchChangeListener {
 
     private static final String TAG = "XiaomiPartsEdgeSuppressionSettingsFragment";
-    //private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
     private EdgeSuppressionManager mEdgeSuppressionManager;
     private SharedPreferences mSharedPreferences;

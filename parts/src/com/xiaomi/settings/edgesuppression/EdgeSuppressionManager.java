@@ -21,8 +21,7 @@ import com.xiaomi.settings.touch.TfWrapper;
 public class EdgeSuppressionManager {
 
     private static final String TAG = "XiaomiPartsEdgeSuppressionManager";
-    //private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
     private Context mContext;
 
