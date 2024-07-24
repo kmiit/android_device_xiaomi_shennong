@@ -54,6 +54,7 @@ public class EdgeSuppressionSettingsFragment extends PreferenceFragment implemen
 
         mSwitchBar = (MainSwitchPreference) findPreference("edgesuppression_enable");
         if (mSwitchBar != null) {
+            mSwitchBar.setDefaultValue(mEdgeSuppressionManager.getDefaultState());
             mSwitchBar.addOnSwitchChangeListener(this);
         }
 

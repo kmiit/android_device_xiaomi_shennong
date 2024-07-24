@@ -12,7 +12,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -25,20 +24,12 @@ public class EdgeSuppressionService extends Service {
 
     @Override
     public void onCreate() {
-        if (Build.SKU.equals("aurora")) {
-            if (DEBUG) Log.d(TAG, "Creating service");
-            super.onCreate();
-            mEdgeSuppressionManager = EdgeSuppressionManager.getInstance(getApplicationContext());
-            getPackageManager().setComponentEnabledSetting(
-                    new ComponentName(this, "com.xiaomi.settings.edgesuppression.EdgeSuppressionSettingsActivity"),
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-        } else {
-            if (DEBUG) Log.d(TAG, "Stopping service, not supported on this device");
-            getPackageManager().setComponentEnabledSetting(
-                    new ComponentName(this, "com.xiaomi.settings.edgesuppression.EdgeSuppressionSettingsActivity"),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-            stopSelf();
-        }
+        if (DEBUG) Log.d(TAG, "Creating service");
+        super.onCreate();
+        mEdgeSuppressionManager = EdgeSuppressionManager.getInstance(getApplicationContext());
+        getPackageManager().setComponentEnabledSetting(
+            new ComponentName(this, "com.xiaomi.settings.edgesuppression.EdgeSuppressionSettingsActivity"),
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
     @Override
