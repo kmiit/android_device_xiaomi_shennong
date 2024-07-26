@@ -578,7 +578,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.display.config</name>
-        <version>1-7</version>
+        <version>1-11</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
