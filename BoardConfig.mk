@@ -173,6 +173,9 @@ TARGET_BOARD_PLATFORM := pineapple
 # Power
 TARGET_POWERHAL_MODE_EXT := $(DEVICE_PATH)/power/power-mode.cpp
 
+# Powershare
+TARGET_POWERSHARE_PATH := /sys/class/qcom-battery/reverse_chg_mode
+
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
