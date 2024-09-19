@@ -258,6 +258,9 @@ vendor.media.vpp.debug.value.use=false
 vendor.mm.enable.qcom_parser=16777215
 vendor.media.omx=0
 
+# Partition source order for Product/Build properties pickup
+ro.product.property_source_order=odm,vendor,product,system_ext,system
+
 # QCOM
 persist.vendor.qcomsysd.enabled=1
 
