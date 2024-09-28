@@ -27,8 +27,10 @@ public class TfWrapper {
         if (mTouchFeature == null) {
             Log.d(TAG, "getTouchFeature: mTouchFeature=null");
             try {
-                mTouchFeature = ITouchFeature.getService();
-                mTouchFeature.asBinder().linkToDeath(mDeathRecipient, 0);
+                var name = "default";
+                var fqName = vendor.xiaomi.hw.touchfeature.ITouchFeature.DESCRIPTOR + "/" + name;
+                var binder = android.os.Binder.allowBlocking(android.os.ServiceManager.waitForDeclaredService(fqName));
+                mTouchFeature = vendor.xiaomi.hw.touchfeature.ITouchFeature.Stub.asInterface(binder);
             } catch (Exception e) {
                 Log.e(TAG, "getTouchFeature failed!", e);
             }
@@ -44,10 +46,10 @@ public class TfWrapper {
         }
         Log.d(TAG, "setTouchFeatureParams: " + params);
         try {
-            if (params.valueList != null) {
-                touchfeature.setModeLongValue(0, params.mode, params.valueList.size(), params.valueList);
+            if (params.valueArray != null) {
+                touchfeature.setEdgeMode(0, params.mode, params.valueArray, params.valueArray.length);
             } else {
-                touchfeature.setModeValue(0, params.mode, params.value);
+                touchfeature.setTouchMode(0, params.mode, params.value);
             }
         } catch (Exception e) {
             Log.e(TAG, "setTouchFeatureParams failed!", e);
@@ -57,26 +59,43 @@ public class TfWrapper {
     public static class TfParams {
         /* touchfeature parameters */
         final int mode, value;
-        final ArrayList<Integer> valueList;
+        final int[] valueArray;
 
+        // Constructor for single int value
         public TfParams(int mode, int value) {
             this.mode = mode;
             this.value = value;
-            this.valueList = null;
+            this.valueArray = null;
         }
 
-        public TfParams(int mode, ArrayList<Integer> valueList) {
+        // Constructor for int array (int[])
+        public TfParams(int mode, int[] valueArray) {
             this.mode = mode;
             this.value = 0;
-            this.valueList = valueList;
+            this.valueArray = valueArray;
         }
 
+        @Override
         public String toString() {
-            if (valueList != null) {
-                return "TouchFeatureParams(" + mode + ", " + valueList + ")";
+            if (valueArray != null) {
+                return "TouchFeatureParams(" + mode + ", " + arrayToString(valueArray) + ")";
             } else {
                 return "TouchFeatureParams(" + mode + ", " + value + ")";
             }
+        }
+
+        // Helper method to convert int[] to String for logging purposes
+        private String arrayToString(int[] array) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            for (int i = 0; i < array.length; i++) {
+                sb.append(array[i]);
+                if (i < array.length - 1) {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+            return sb.toString();
         }
     }
 }

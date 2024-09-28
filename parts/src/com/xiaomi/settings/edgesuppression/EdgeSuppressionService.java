@@ -25,7 +25,7 @@ public class EdgeSuppressionService extends Service {
 
     @Override
     public void onCreate() {
-        if ((Build.SKU.equals("nuwa") || Build.SKU.equals("ishtar"))) {
+        if (Build.SKU.equals("aurora")) {
             if (DEBUG) Log.d(TAG, "Creating service");
             super.onCreate();
             mEdgeSuppressionManager = EdgeSuppressionManager.getInstance(getApplicationContext());

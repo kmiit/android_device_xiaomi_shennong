@@ -6,10 +6,8 @@
 
 package com.xiaomi.settings.edgesuppression;
 
-import java.util.ArrayList;
-
 public class SuppressionRect {
-    private ArrayList<Integer> list = new ArrayList<>();
+    private int[] list = new int[8]; // Fixed size array for 8 integers
     private int bottomRightX;
     private int bottomRightY;
     private int position;
@@ -50,22 +48,35 @@ public class SuppressionRect {
         bottomRightY = by;
     }
 
+    @Override
     public String toString() {
-        return "SuppressionRect{list=" + list + ", type=" + type + ", position=" + position + ", topLeftX=" + topLeftX + ", topLeftY=" + topLeftY + ", bottomRightX=" + bottomRightX + ", bottomRightY=" + bottomRightY + ", time=" + 0 + ", node=" + 0 + '}';
+        return "SuppressionRect{list=" + arrayToString(list) + ", type=" + type + ", position=" + position + ", topLeftX=" + topLeftX + ", topLeftY=" + topLeftY + ", bottomRightX=" + bottomRightX + ", bottomRightY=" + bottomRightY + ", time=" + 0 + ", node=" + 0 + '}';
     }
 
-    public ArrayList<Integer> getList() {
-        if (list.size() != 0) {
-            list.clear();
-        }
-        list.add(Integer.valueOf(type));
-        list.add(Integer.valueOf(position));
-        list.add(Integer.valueOf(topLeftX));
-        list.add(Integer.valueOf(topLeftY));
-        list.add(Integer.valueOf(bottomRightX));
-        list.add(Integer.valueOf(bottomRightY));
-        list.add(Integer.valueOf(0));
-        list.add(Integer.valueOf(0));
+    // Method to populate the int[] list based on the instance variables
+    public int[] getList() {
+        list[0] = type;
+        list[1] = position;
+        list[2] = topLeftX;
+        list[3] = topLeftY;
+        list[4] = bottomRightX;
+        list[5] = bottomRightY;
+        list[6] = 0;  // Placeholder for time
+        list[7] = 0;  // Placeholder for node
         return list;
+    }
+
+    // Utility method to convert int[] to a readable string
+    private String arrayToString(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }

@@ -43,7 +43,7 @@
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.display" />
+                android:value="com.android.settings.category.ia.gestures" />
             <meta-data
                 android:name="com.android.settings.summary"
                 android:value="@string/edgesuppression_summary" />

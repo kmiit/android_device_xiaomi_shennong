@@ -12,9 +12,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import com.xiaomi.settings.R;
 import com.xiaomi.settings.touch.TfWrapper;
 
@@ -27,8 +24,8 @@ public class EdgeSuppressionManager {
 
     private static EdgeSuppressionManager sInstance;
 
-    private ArrayList<Integer> mSendList;
-    private ArrayList<SuppressionRect> mRectList;
+    private int[] mSendArray;
+    private SuppressionRect[] mRectArray;
     private int mIndex;
     private int mScreenHeight;
     private int mScreenWidth;
@@ -58,8 +55,11 @@ public class EdgeSuppressionManager {
 
         mAbsoluteLevel = mContext.getResources().getIntArray(R.array.edge_suppresson_absolute);
         mCorner = mContext.getResources().getIntArray(R.array.edge_suppresson_corner);
-        mRectList = new ArrayList<>(mContext.getResources().getInteger(R.integer.edge_suppresson_rect_size));
-        mSendList = new ArrayList<>(mContext.getResources().getInteger(R.integer.edge_suppresson_send_size));
+        int rectSize = mContext.getResources().getInteger(R.integer.edge_suppresson_rect_size);
+        int sendSize = mContext.getResources().getInteger(R.integer.edge_suppresson_send_size);
+        mRectArray = new SuppressionRect[rectSize];
+        mSendArray = new int[sendSize];
+        initRectArray();
     }
 
     public static synchronized EdgeSuppressionManager getInstance(Context context) {
@@ -69,19 +69,16 @@ public class EdgeSuppressionManager {
         return sInstance;
     }
 
-    public ArrayList<Integer> handleEdgeSuppressionChange() {
+    public int[] handleEdgeSuppressionChange() {
         int rotation = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
         float width = PreferenceManager.getDefaultSharedPreferences(mContext).getFloat("edgesuppression_width_value", 0.8f);
-        ArrayList<Integer> suppressionRect = getSuppressionRect(rotation, width);
+        int[] suppressionRect = getSuppressionRect(rotation, width);
         TfWrapper.setTouchFeature(new TfWrapper.TfParams(15, suppressionRect));
         return suppressionRect;
     }
 
-    private ArrayList<Integer> getSuppressionRect(int rotation, float width) {
-        mSendList.clear();
-        if (mRectList.isEmpty()) {
-            initRectList();
-        }
+    private int[] getSuppressionRect(int rotation, float width) {
+        resetSendArray();
         if (rotation == 1 || rotation == 3) {
             setRectPointForHorizontal(getSuppressionSize(true, width), Mode.ABSOLUTE.index);
             setRectPointForHorizontal(getSuppressionSize(false, width), Mode.CONDITION.index);
@@ -90,8 +87,8 @@ public class EdgeSuppressionManager {
             setRectPointForPortrait(getSuppressionSize(false, width), Mode.CONDITION.index);
         }
         setCornerRectPoint(rotation);
-        compileSendList();
-        return mSendList;
+        compileSendArray();
+        return mSendArray;
     }
 
     private void setRectPointForHorizontal(int width, int modeIndex) {
@@ -141,10 +138,10 @@ public class EdgeSuppressionManager {
         return (int) (width * (absolute ? 10 : 50));
     }
 
-    private void initRectList() {
+    private void initRectArray() {
         int size = mContext.getResources().getInteger(R.integer.edge_suppresson_rect_size);
         for (int i = 0; i < size; i++) {
-            mRectList.add(new SuppressionRect());
+            mRectArray[i] = new SuppressionRect();
         }
     }
 
@@ -152,9 +149,12 @@ public class EdgeSuppressionManager {
         suppressionRect.setValue(t, p, tx, ty, bx, by);
     }
 
-    private void compileSendList() {
-        for (SuppressionRect rect : mRectList) {
-            mSendList.addAll(rect.getList());
+    private void compileSendArray() {
+        int sendIndex = 0;
+        for (SuppressionRect rect : mRectArray) {
+            int[] rectValues = rect.getList();
+            System.arraycopy(rectValues, 0, mSendArray, sendIndex, rectValues.length);
+            sendIndex += rectValues.length;
         }
         resetIndex();
     }
@@ -164,6 +164,11 @@ public class EdgeSuppressionManager {
     }
 
     private SuppressionRect getCurrentRect() {
-        return mRectList.get(mIndex++);
+        return mRectArray[mIndex++];
+    }
+
+    private void resetSendArray() {
+        // Reset the array to avoid stale values
+        mSendArray = new int[mSendArray.length];
     }
 }
