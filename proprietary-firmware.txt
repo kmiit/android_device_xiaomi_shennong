@@ -1,0 +1,28 @@
+## All proprietary files from this list, unless pinned and noted otherwise,
+## are from shennong OS2.0.6.0.VNBCNXM
+
+abl.img;AB
+aop.img;AB
+aop_config.img;AB
+bluetooth.img;AB
+cpucp.img;AB
+cpucp_dtb.img;AB
+devcfg.img;AB
+dsp.img;AB
+featenabler.img;AB
+hyp.img;AB
+imagefv.img;AB
+keymaster.img;AB
+modem.img;AB
+modemfirmware.img;AB
+multiimgqti.img;AB
+qupfw.img;AB
+shrm.img;AB
+spuservice.img;AB
+tz.img;AB
+uefi.img;AB
+uefisecapp.img;AB
+vm-bootsys.img;AB
+xbl.img;AB
+xbl_config.img;AB
+xbl_ramdump.img;AB
