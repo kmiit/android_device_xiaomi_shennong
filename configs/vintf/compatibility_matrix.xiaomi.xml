@@ -34,6 +34,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>com.fingerprints.fpc.extension</name>
+        <interface>
+            <name>IFpcExtension</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.dolby.hardware.dms</name>
         <version>2.0</version>
