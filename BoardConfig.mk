@@ -6,6 +6,7 @@
 
 DEVICE_PATH := device/xiaomi/shennong
 KERNEL_PATH := $(DEVICE_PATH)-kernel
+TARGET_PROVIDES_AUDIO_HAL ?= true
 
 # A/B
 AB_OTA_UPDATER := true
@@ -216,7 +217,8 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := \
 DEVICE_MANIFEST_SKUS := pineapple
 DEVICE_MANIFEST_PINEAPPLE_FILES := \
     $(DEVICE_PATH)/configs/vintf/manifest_pineapple.xml \
-    $(DEVICE_PATH)/configs/vintf/manifest_xiaomi.xml
+    $(DEVICE_PATH)/configs/vintf/manifest_xiaomi.xml \
+    $(if $(TARGET_PROVIDES_AUDIO_HAL),hardware/qcom-caf/sm8650/audio/primary-hal/configs/common/manifest_non_qmaa.xml,)
 
 DEVICE_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml \
