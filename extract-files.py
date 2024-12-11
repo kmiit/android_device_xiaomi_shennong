@@ -45,6 +45,9 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy',
      'vendor/etc/seccomp_policy/wfdhdcphalservice.policy'): blob_fixup()
         .call(fix_gettid),
+    'vendor/etc/sensors/hals.conf': blob_fixup()
+        .regex_replace('sensors.ultrasoundproximity.so', '')
+        .regex_replace('vl53l8.hal@2.0.so', ''),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('qcodec2_shim.so'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
