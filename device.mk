@@ -110,13 +110,7 @@ TARGET_BOOT_ANIMATION_RES := 1440
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
-    android.hardware.boot-service.qti.recovery \
-    libboot_control_qti \
-    libgptutils.pineapple
-
-# Boot control HAL test app
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
+    android.hardware.boot-service.qti.recovery
 
 # Fastboot
 PRODUCT_PACKAGES += \

@@ -15,7 +15,7 @@
 //
 
 cc_library {
-    name: "libgptutils.pineapple",
+    name: "libgpt-utils",
     vendor: true,
     recovery_available: true,
     shared_libs: [
