@@ -412,6 +412,10 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0 \
     android.hardware.thermal@2.0.vendor
 
+# Touchscreen
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
