@@ -6,6 +6,7 @@
 
 DEVICE_PATH := device/xiaomi/shennong
 KERNEL_PATH := $(DEVICE_PATH)-kernel
+TARGET_GRALLOC_HANDLE_HAS_UBWCP_FORMAT := true
 TARGET_PROVIDES_AUDIO_HAL ?= true
 
 # A/B
