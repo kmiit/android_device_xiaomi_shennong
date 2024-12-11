@@ -20,5 +20,10 @@ PRODUCT_DEVICE := shennong
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_NAME := lineage_shennong
 
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="shennong-user 15 AQ3A.240627.003 OS2.0.6.0.VNBCNXM release-keys"
+
+BUILD_FINGERPRINT := Xiaomi/shennong/shennong:15/AQ3A.240627.003/OS2.0.6.0.VNBCNXM:user/release-keys
+
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
