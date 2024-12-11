@@ -33,11 +33,6 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := kryo300
 
-# Boot control
-SOONG_CONFIG_NAMESPACES += ufsbsg
-SOONG_CONFIG_ufsbsg += ufsframework
-SOONG_CONFIG_ufsbsg_ufsframework := bsg
-
 # Bootloader
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 TARGET_BOOTLOADER_BOARD_NAME := pineapple
