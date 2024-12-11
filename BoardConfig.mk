@@ -192,6 +192,10 @@ TARGET_USERIMAGES_USE_F2FS := true
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 
+# Security patch level
+BOOT_SECURITY_PATCH := 2024-10-05
+VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
+
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
