@@ -19,13 +19,12 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
+    "device/xiaomi/shennong",
     "hardware/qcom-caf/sm8650",
     "hardware/qcom-caf/wlan",
     "hardware/xiaomi",
-    "vendor/qcom/opensource/commonsys/display",
     "vendor/qcom/opensource/commonsys-intf/display",
     "vendor/qcom/opensource/dataservices",
-    "vendor/qcom/opensource/display",
 ]
 
 blob_fixups: blob_fixups_user_type = {
