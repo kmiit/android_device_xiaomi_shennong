@@ -28,15 +28,6 @@ namespace_imports = [
     "vendor/qcom/opensource/display",
 ]
 
-def fix_gettid(
-    ctx: BlobFixupCtx,
-    file: File,
-    file_path: str,
-    *args,
-    **kargs,):
-    with open(file_path, 'a') as f:
-        f.writelines('\ngettid: 1')
-
 blob_fixups: blob_fixups_user_type = {
     (
         'odm/etc/camera/enhance_motiontuning.xml',
@@ -44,11 +35,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/etc/camera/motiontuning.xml'
     ): blob_fixup()
         .regex_replace('xml=version', 'xml version'),
-    ('vendor/etc/seccomp_policy/qsap_sensors.policy',
-     'vendor/etc/seccomp_policy/atfwd@2.0.policy',
-     'vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy',
-     'vendor/etc/seccomp_policy/wfdhdcphalservice.policy'): blob_fixup()
-        .call(fix_gettid),
     'vendor/etc/sensors/hals.conf': blob_fixup()
         .regex_replace('sensors.ultrasoundproximity.so', '')
         .regex_replace('vl53l8.hal@2.0.so', ''),
