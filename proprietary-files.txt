@@ -2286,7 +2286,7 @@ vendor/etc/vintf/manifest/manifest_identity_credential.xml
 vendor/lib64/libqtiidentitycredential.so
 
 # IMS
-system/system/lib64/vendor.qti.diaghal-V1-ndk.so:system_ext/lib64/vendor.qti.diaghal-V1-ndk.so
+system/lib64/vendor.qti.diaghal-V1-ndk.so
 system_ext/app/ImsRcsService/ImsRcsService.apk
 system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 system_ext/etc/permissions/vendor.qti.ims.rcsservice.xml
@@ -2814,7 +2814,7 @@ vendor/etc/init/qguard.rc
 vendor/etc/qguard.json
 
 # QMI
-system/system/etc/sysconfig/qti_whitelist.xml
+system/etc/sysconfig/qti_whitelist.xml
 vendor/bin/irsc_util
 vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmipriod
@@ -3685,7 +3685,7 @@ vendor/etc/wifi/wpa_supplicant_overlay.conf
 vendor/lib64/libWlanServiceJni.so
 
 # Wifi Display
-system/system/framework/WfdCommon.jar:system_ext/framework/WfdCommon.jar
+system/framework/WfdCommon.jar
 system_ext/etc/permissions/wfd-system-ext-privapp-permissions-qti.xml
 system_ext/priv-app/WfdService/WfdService.apk
 vendor/bin/wfdhdcphalservice
