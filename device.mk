@@ -368,6 +368,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.servicetracker@1.2.vendor
 
+# Shims
+PRODUCT_PACKAGES += \
+    qcodec2_shim \
+    dpm_shim
+
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 34
 
