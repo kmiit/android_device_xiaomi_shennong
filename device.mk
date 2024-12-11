@@ -155,6 +155,14 @@ PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot-service.example_recovery
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.common.util \
+    android.hardware.biometrics.common.thread
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+
 # F2fs utilities
 PRODUCT_PACKAGES += \
     sg_write_buffer \
