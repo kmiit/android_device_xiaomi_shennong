@@ -331,18 +331,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
     fstab.qcom \
-    fstab.qcom.vendor_ramdisk \
-    init.class_main.sh \
-    init.qcom.class_core.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.rc \
-    init.qcom.sh \
     init.recovery.qcom.rc \
-    init.shennong.rc \
-    init.target.rc \
-    ueventd-odm.rc \
-    ueventd.qcom.rc
+    init.target.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
 
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 34
