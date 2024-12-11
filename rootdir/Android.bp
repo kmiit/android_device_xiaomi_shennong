@@ -4,6 +4,13 @@
 //
 
 prebuilt_etc {
+    name: "init.logcat.rc",
+    src: "etc/init.logcat.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "charger_fw_fstab.qti",
     src: "etc/charger_fw_fstab.qti",
     recovery: true,
