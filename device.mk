@@ -437,6 +437,10 @@ PRODUCT_COPY_FILES += \
 # Vendor API
 BOARD_SHIPPING_API_LEVEL := 34
 
+# Verified boot
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
+
 # WiFi firmware symlinks
 PRODUCT_PACKAGES += \
     firmware_wlanmdsp.otaupdate_symlink \
