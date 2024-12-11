@@ -38,8 +38,12 @@ def fix_gettid(
         f.writelines('\ngettid: 1')
 
 blob_fixups: blob_fixups_user_type = {
-    '*.xml': blob_fixup()
-        .fix_xml(),
+    (
+        'odm/etc/camera/enhance_motiontuning.xml',
+        'odm/etc/camera/night_motiontuning.xml',
+        'odm/etc/camera/motiontuning.xml'
+    ): blob_fixup()
+        .regex_replace('xml=version', 'xml version'),
     ('vendor/etc/seccomp_policy/qsap_sensors.policy',
      'vendor/etc/seccomp_policy/atfwd@2.0.policy',
      'vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy',
