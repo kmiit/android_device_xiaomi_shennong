@@ -314,6 +314,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/power/config/pineapple/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
+# QTI
+PRODUCT_PACKAGES += \
+    libjson \
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti_vendor \
+    vendor.qti.hardware.systemhelper@1.0.vendor
+
 # Rootdir
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
