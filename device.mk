@@ -210,6 +210,13 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0.vendor \
     android.hardware.health@2.1.vendor
 
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0.vendor \
+    android.hidl.memory.block@1.0.vendor \
+    libhidltransport.vendor \
+    libhwbinder.vendor
+
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
