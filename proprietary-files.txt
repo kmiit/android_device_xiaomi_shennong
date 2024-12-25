@@ -3261,15 +3261,6 @@ vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.qsh.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate-V1-ndk.so
 
-# SLA
-vendor/bin/slad
-vendor/bin/hw/vendor.qti.sla.service@1.0-service
-vendor/etc/init/slad.rc
-vendor/etc/init/vendor.qti.sla.service@1.0-service.rc
-vendor/etc/sla/slad.conf
-vendor/lib64/vendor.qti.sla.service@1.0-impl.so
-vendor/lib64/vendor.qti.sla.service@1.0.so
-
 # Soter
 product/app/SoterService/SoterService.apk
 vendor/bin/vendor.qti.hardware.soter-provision

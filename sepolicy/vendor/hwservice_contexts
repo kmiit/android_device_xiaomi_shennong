@@ -26,8 +26,5 @@ vendor.xiaomi.hardware.tidaservice::ITidaService    u:object_r:hal_tidaservice_h
 # Sensors
 vendor.xiaomi.sensor.citsensorservice::ICitSensorService   u:object_r:vendor_hal_citsensorservice_xiaomi_hwservice:s0
 
-# SLA
-vendor.qti.sla.service::ISlaService             u:object_r:hal_slaservice_hwservice:s0
-
 # Touchfeature
 vendor.xiaomi.hw.touchfeature::ITouchFeature           u:object_r:hal_touchfeature_xiaomi_hwservice:s0

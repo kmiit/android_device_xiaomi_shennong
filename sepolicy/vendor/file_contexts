@@ -77,9 +77,6 @@
 /sys/bus/iio/devices                               u:object_r:vendor_sysfs_iio:s0
 /(odm|vendor/odm|vendor|system/vendor)/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl u:object_r:vendor_hal_citsensorservice_xiaomi_default_exec:s0
 
-# SLA
-/(vendor|system/vendor)/bin/hw/vendor\.qti\.sla\.service\@1\.0-service u:object_r:hal_slaservice_qti_exec:s0
-
 # Touchfeature
 /data/vendor/touch(/.*)?                                    u:object_r:vendor_data_touchreport_file:s0
 /dev/xiaomi-touch                                           u:object_r:touchfeature_device:s0

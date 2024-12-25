@@ -34,7 +34,3 @@ attribute vendor_hal_citsensorservice_xiaomi;
 attribute vendor_hal_citsensorservice_xiaomi_client;
 attribute vendor_hal_citsensorservice_xiaomi_server;
 
-# SLA
-attribute hal_slaservice;
-attribute hal_slaservice_client;
-attribute hal_slaservice_server;
