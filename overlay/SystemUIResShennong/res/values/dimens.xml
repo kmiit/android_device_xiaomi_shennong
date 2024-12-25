@@ -4,6 +4,10 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. If unspecified, UI that
+         relies on this value will not be sized correctly. -->
+    <dimen name="pixel_pitch" format="float">52.29</dimen>
+
     <!-- the padding on the top of the statusbar (usually 0) -->
     <dimen name="status_bar_padding_top">40.0px</dimen>
 
