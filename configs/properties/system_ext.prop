@@ -6,7 +6,6 @@ vendor.camera.aux.packagelist=org.lineageos.aperture,org.codeaurora.snapcam,com.
 persist.vendor.dpm.feature=11
 
 # Radio
-ro.telephony.sim_slots.count=2
 telephony.active_modems.max_count=2
 
 # Media
