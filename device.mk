@@ -252,6 +252,7 @@ PRODUCT_PACKAGES += \
     CarrierConfig \
     FrameworksResShennong \
     FrameworksResXiaomi \
+    NcmTetheringOverlay \
     SecureElementResTarget \
     SettingsResXiaomi \
     SystemUIResShennong \
