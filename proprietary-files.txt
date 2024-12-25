@@ -3398,9 +3398,6 @@ vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 odm/etc/ueventd.rc;MODULE=ueventd-odm.rc
 vendor/etc/ueventd.rc
 
-# USB
-vendor/etc/usb_compositions.conf
-
 # Vibrator
 odm/firmware/0x14da8G0x025c4G0x0a6a8G0x00188G0x0f400G0x0d520G0x05accG
 odm/firmware/0_click_P_RTP.bin
