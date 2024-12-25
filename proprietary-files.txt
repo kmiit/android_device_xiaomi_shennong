@@ -3673,9 +3673,6 @@ vendor/etc/wifi/wpa_supplicant_overlay.conf
 vendor/lib64/libWlanServiceJni.so
 
 # Wifi Display
-system/framework/WfdCommon.jar
-system_ext/etc/permissions/wfd-system-ext-privapp-permissions-qti.xml
-system_ext/priv-app/WfdService/WfdService.apk
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
 vendor/bin/wifidisplayhalservice
