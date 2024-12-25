@@ -2500,11 +2500,6 @@ vendor/lib64/libdolbyeglcore.so
 vendor/lib64/libdolbyencoderprocessor.so
 vendor/lib64/libdolbyottcameracontrol.so
 
-# Memtrack
-vendor/bin/hw/vendor.qti.hardware.memtrack-service
-vendor/etc/init/memtrack_qti.rc
-vendor/etc/vintf/manifest/memtrack_qti.xml
-
 # MiCharge
 vendor/bin/hw/vendor.xiaomi.hardware.micharge-service
 vendor/etc/init/vendor.xiaomi.hardware.micharge-service.rc
