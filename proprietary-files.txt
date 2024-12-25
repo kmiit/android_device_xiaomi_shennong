@@ -3671,7 +3671,6 @@ vendor/etc/wifi/p2p_supplicant_overlay.conf
 vendor/etc/wifi/passpointProfile.conf
 vendor/etc/wifi/qca6750/WCNSS_qcom_cfg.ini
 vendor/etc/wifi/vendor_cmd.xml
-vendor/etc/wifi/wpa_supplicant.conf
 vendor/etc/wifi/wpa_supplicant_overlay.conf
 vendor/lib64/libWlanServiceJni.so
 
