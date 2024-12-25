@@ -9,6 +9,8 @@ $(call inherit-product, vendor/xiaomi/shennong/shennong-vendor.mk)
 
 # Enable virtual A/B.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
+
+# Enable virtual AB with vendor ramdisk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
 
 # Enable project quotas and casefolding for emulated storage without sdcardfs.
@@ -224,6 +226,9 @@ PRODUCT_PACKAGES += \
     IPACM_Filter_cfg.xml
 
 # IR Blaster
+PRODUCT_PACKAGES += \
+    android.hardware.ir-service.example
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/android.hardware.consumerir.xml
 
