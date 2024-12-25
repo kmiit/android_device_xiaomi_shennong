@@ -36,3 +36,10 @@ prebuilt_etc {
     sub_dir: "init/hw",
     vendor: true,
 }
+
+prebuilt_etc_xml {
+    name: "compat_framework_overrides.xml",
+    src: "etc/compat_framework_overrides.xml",
+    sub_dir: "appcompat",
+    product_specific: true,
+}

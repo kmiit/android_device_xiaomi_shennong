@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<overrides>
+    <!-- Override DYNAMIC_RECEIVER_EXPLICIT_EXPORT_REQUIRED for ims packages -->
+    <change-overrides changeId="161145287">
+        <validated>
+            <override-value packageName="org.codeaurora.ims" enabled="disable" />
+            <override-value packageName="com.qti.phone" enabled="disable" />
+        </validated>
+    </change-overrides>
+</overrides>
