@@ -231,7 +231,6 @@ vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
 vendor/lib64/hw/audio.primary.pineapple.so
-vendor/lib64/hw/sound_trigger.primary.pineapple.so
 vendor/lib64/hw/android.hardware.soundtrigger@2.3-impl.so
 vendor/lib64/hw/gyro_fusion_interface.so
 vendor/lib64/libVoiceSdk.so
