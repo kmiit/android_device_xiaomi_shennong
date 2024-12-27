@@ -64,9 +64,9 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('sensors.ultrasoundproximity.so', '')
         .regex_replace('vl53l8.hal@2.0.so', ''),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
-        .add_needed('qcodec2_shim.so'),
+        .add_needed('libcodec2_shim.so'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
-        .add_needed('dpm_shim.so'),
+        .add_needed('libhidlbase_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
