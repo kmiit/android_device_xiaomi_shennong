@@ -1437,7 +1437,7 @@ odm/lib64/libcamerapostproc.so;DISABLE_CHECKELF
 odm/lib64/libcamera_scene.so
 odm/lib64/libcamlog.so
 odm/lib64/libcamxcommonutils.so
-odm/lib64/libcamxexternalformatutils.so
+odm/lib64/libcamxexternalformatutils.so;SYMLINK=vendor/lib64/libcamxexternalformatutils.so
 odm/lib64/libcamxfdengine.so
 odm/lib64/libcamxhwnodecontext.so;DISABLE_CHECKELF
 odm/lib64/libcamxifestriping.so;DISABLE_CHECKELF
@@ -1474,6 +1474,7 @@ odm/lib64/libhis_face_tracking.so
 odm/lib64/libhme.so;DISABLE_CHECKELF
 odm/lib64/libhta_hexagon_runtime_snpe.so
 odm/lib64/libHISCppAlgos.so
+odm/lib64/libiccprofile.so
 odm/lib64/libipebpsstriping.so;DISABLE_CHECKELF
 odm/lib64/libipebpsstriping170.so;DISABLE_CHECKELF
 odm/lib64/libipebpsstriping480.so;DISABLE_CHECKELF
@@ -1588,6 +1589,7 @@ odm/lib64/vendor.xiaomi.hardware.bgservice@1.0-impl.so
 odm/lib64/vendor.xiaomi.hardware.mrm-V1-ndk_platform.so
 vendor/etc/camera/cameraopt_vendor.json
 vendor/etc/vintf/manifest/vendor.xiaomi.hardware.quickcamera.xml
+vendor/lib64/libcameraopt.so
 vendor/lib64/libhalide_hexagon_host.so
 vendor/lib64/libmialgo.so
 vendor/lib64/libmidebuggerdimpl_vendor.so;DISABLE_CHECKELF
@@ -1602,6 +1604,7 @@ vendor/lib64/libqvrservice_client.qti.so
 vendor/lib64/libSNPESample.so
 vendor/lib64/libtracker_6dof_impl.so
 vendor/lib64/vendor.xiaomi.hardware.aon-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.quickcamera-V1-ndk.so
 
 # Camera Firmware
 odm/firmware/CAMERA_ICP_170.elf
