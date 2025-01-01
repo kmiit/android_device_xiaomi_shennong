@@ -50,10 +50,19 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.media.c2</name>
-        <version>1.0</version>
-        <version>1.2</version>
+        <version>1.0-2</version>
         <interface>
             <name>IComponentStore</name>
+            <instance>software</instance>
+            <regex-instance>default[0-9]*</regex-instance>
+            <regex-instance>vendor[0-9]*_software</regex-instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.media.c2</name>
+        <version>1.0</version>
+        <interface>
+            <name>IConfigurable</name>
             <instance>default</instance>
             <instance>software</instance>
         </interface>
@@ -63,18 +72,8 @@
         <version>1.0</version>
         <interface>
             <name>IComponentStore</name>
-            <instance>default</instance>
             <instance>dolby</instance>
             <instance>ozoaudio</instance>
-            <instance>software</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.nfc</name>
-        <version>1.0</version>
-        <interface>
-            <name>INfc</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="aidl" optional="true">
