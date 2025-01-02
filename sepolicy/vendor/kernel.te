@@ -1,2 +1,1 @@
-allow kernel vendor_hal_usb_qti:fd *;
-allow kernel vendor_ramdump_block_device:blk_file rw_file_perms;
+allow kernel self:capability net_bind_service;

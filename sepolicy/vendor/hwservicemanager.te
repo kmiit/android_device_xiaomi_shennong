@@ -1,0 +1,2 @@
+binder_call(hwservicemanager, vendor_hal_citsensorservice_xiaomi_default)
+binder_call(hwservicemanager, vendor_hal_displayfeature_xiaomi_default)

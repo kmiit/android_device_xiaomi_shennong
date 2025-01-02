@@ -1,1 +1,1 @@
-allow permissioncontroller_app tethering_service:service_manager find;
+hal_client_domain(permissioncontroller_app, vendor_hal_qspmhal);

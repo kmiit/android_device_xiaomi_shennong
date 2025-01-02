@@ -9,8 +9,6 @@ KERNEL_PATH := $(DEVICE_PATH)-kernel
 TARGET_GRALLOC_HANDLE_HAS_UBWCP_FORMAT := true
 TARGET_PROVIDES_AUDIO_HAL ?= true
 
-SELINUX_IGNORE_NEVERALLOWS := true
-
 # A/B
 AB_OTA_PARTITIONS += \
     boot \
@@ -89,8 +87,7 @@ BOARD_BOOTCONFIG := \
     androidboot.load_modules_parallel=true \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3 \
-    androidboot.vendor.qspa=true \
-    androidboot.selinux=permissive
+    androidboot.vendor.qspa=true
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_INIT_BOOT_HEADER_VERSION := 4

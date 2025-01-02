@@ -1,0 +1,18 @@
+attribute hal_ozonotify;
+attribute hal_ozonotify_client;
+attribute hal_ozonotify_server;
+
+type hal_ozonotify_default, domain;
+type hal_ozonotify_default_exec, exec_type, file_type, vendor_file_type;
+type hal_ozonotify_hwservice, hwservice_manager_type;
+type hal_ozonotify_service, service_manager_type;
+
+add_service(hal_ozonotify_default, hal_ozonotify_service)
+
+binder_call(hal_ozonotify_default, servicemanager)
+
+hal_server_domain(hal_ozonotify_default, hal_ozonotify)
+
+init_daemon_domain(hal_ozonotify_default)
+
+vndbinder_use(hal_ozonotify_default)

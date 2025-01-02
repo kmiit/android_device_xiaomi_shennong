@@ -1,0 +1,13 @@
+attribute hal_aidlbgservice_xiaomi;
+attribute hal_aidlbgservice_xiaomi_client;
+attribute hal_aidlbgservice_xiaomi_server;
+
+attribute hal_camera_mivi;
+attribute hal_camera_mivi_client;
+attribute hal_camera_mivi_server;
+
+type hal_aidlbgservice_xiaomi_service, hal_service_type, protected_service, service_manager_type;
+
+type hal_camera_mivi_hwservice, hwservice_manager_type;
+
+add_service(hal_aidlbgservice_xiaomi_server, hal_aidlbgservice_xiaomi_service)

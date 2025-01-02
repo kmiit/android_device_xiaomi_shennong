@@ -1,0 +1,7 @@
+attribute hal_camera_aon;
+attribute hal_camera_aon_client;
+attribute hal_camera_aon_server;
+
+type hal_camera_aon_default, domain;
+type hal_camera_aon_default_exec, exec_type, file_type, vendor_file_type;
+type hal_camera_aon_service, service_manager_type;

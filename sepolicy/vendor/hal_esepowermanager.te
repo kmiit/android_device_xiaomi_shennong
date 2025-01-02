@@ -1,2 +1,0 @@
-type vendor_hal_esepowermanager_qti, domain;
-type vendor_hal_esepowermanager_hwservice, hwservice_manager_type, protected_hwservice;
