@@ -1504,7 +1504,6 @@ odm/lib64/libmiphone_preview_bokeh.so
 odm/lib64/libmiphone_preview_depth.so
 odm/lib64/libmiphone_preview_mdbokeh.so
 odm/lib64/libmiphone_tsspot.so
-odm/lib64/libmiriskmanager.so
 odm/lib64/libmis_platform.so
 odm/lib64/libmis_plugin_dummy.so
 odm/lib64/libmis_plugin_gme.so
@@ -1572,7 +1571,6 @@ odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-ndk_platform.so
 odm/lib64/vendor.xiaomi.hardware.bgservice@1.0.so
 odm/lib64/vendor.xiaomi.hardware.bgservice@1.0-impl.so
-odm/lib64/vendor.xiaomi.hardware.mrm-V1-ndk_platform.so
 vendor/etc/camera/cameraopt_vendor.json
 vendor/etc/vintf/manifest/vendor.xiaomi.hardware.quickcamera.xml
 vendor/lib64/libcameraopt.so
