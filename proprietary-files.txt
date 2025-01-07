@@ -2303,7 +2303,7 @@ system_ext/lib64/vendor.qti.ims.datachannelservice-V1-ndk.so
 system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
-system_ext/priv-app/ims/ims.apk
+system_ext/priv-app/ims/ims.apk;REQUIRED=QtiTelephonyCompat
 vendor/bin/ims-dataservice-daemon
 vendor/bin/ims_rtp_daemon
 vendor/bin/imsdaemon
@@ -2918,7 +2918,7 @@ system_ext/framework/vendor.qti.ims.rcsconfig-V2.1-java.jar
 system_ext/framework/vendor.qti.ims.rcssipaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.rcsuceaidlservice-V1-java.jar
 system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-system_ext/priv-app/QtiTelephony/QtiTelephony.apk
+system_ext/priv-app/QtiTelephony/QtiTelephony.apk;REQUIRED=QtiTelephonyCompat
 vendor/app/IWlanService/IWlanService.apk
 vendor/bin/hw/qcrilNrd
 vendor/bin/ks
