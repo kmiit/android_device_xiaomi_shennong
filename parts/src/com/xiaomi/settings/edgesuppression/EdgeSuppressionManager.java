@@ -34,7 +34,7 @@ public class EdgeSuppressionManager {
     private int mScreenWidth;
     private int[] mAbsoluteLevel;
     private int[] mCorner;
-    private String[] mSupportedDevices = {"aurora", "shennong"};
+    private String[] mSupportedDevices = {"aurora", "shennong", "goku"};
 
     private enum Mode {
         CORNER(0),
