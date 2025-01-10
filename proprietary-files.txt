@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from Xiaomi 14 Pro (OS2.0.6.0.VNBCNXM). 
+## are from Xiaomi 14 Pro (OS2.0.101.0.VNBCNXM). 
 
 # ACDB
 odm/etc/acdbdata/Forte/Forte_acdb_cal.acdb:odm/etc/acdbdata/pineapple_mtp/Forte_acdb_cal.acdb
@@ -414,7 +414,6 @@ odm/etc/camera/aivsModel_16E8F8F9
 odm/etc/camera/aivsModel_20D4BB1D
 odm/etc/camera/aivsModel_298FD264
 odm/etc/camera/aivsModel_57749835
-odm/etc/camera/aivsModel_6684B07C
 odm/etc/camera/aivsModel_8D84710A
 odm/etc/camera/aivsModel_8DE9C507
 odm/etc/camera/aivsModel_AFC2F49C
@@ -2130,7 +2129,7 @@ odm/bin/hw/vendor.xiaomi.hardware.dtool1-service
 odm/etc/init/vendor.xiaomi.hardware.dtool1.rc
 odm/etc/vintf/manifest/AHBF-V3-service.xml
 odm/etc/vintf/manifest/fod-aidl.xml
-odm/lib64/hw/fingerprint.goodix_fod.so
+odm/lib64/hw/fingerprint.goodix_fod.so:odm/lib64/hw/fingerprint.goodix_fod.default.so;FIX_SONAME
 odm/lib64/libgf_hal.so
 vendor/lib64/com.fingerprints.extension3-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.dtool1-V1-ndk.so

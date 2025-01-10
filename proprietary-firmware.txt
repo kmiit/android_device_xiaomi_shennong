@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from shennong OS2.0.6.0.VNBCNXM
+## are from shennong OS2.0.101.0.VNBCNXM
 
 abl.img;AB
 aop.img;AB
