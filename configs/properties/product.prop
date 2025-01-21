@@ -47,3 +47,7 @@ persist.vendor.fingerprint.sensor_location=720:2532:128
 persist.vendor.fingerprint.udfps.display_touch=false
 ro.hardware.fingerprint=goodix_fod
 ro.hardware.fp.fod=true
+
+# RKPD
+remote_provisioning.enable_rkpd=true
+remote_provisioning.hostname=remoteprovisioning.googleapis.com
