@@ -50,7 +50,6 @@
 
 # # HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health-service\.xiaomi                  u:object_r:hal_health_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.xiaomi           u:object_r:hal_vibrator_default_exec:s0
 
 # IR
 /dev/ir_spi                               u:object_r:ir_spi_device:s0
