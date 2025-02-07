@@ -310,7 +310,8 @@ PRODUCT_SHIPPING_API_LEVEL := 34
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/xiaomi
+    hardware/xiaomi \
+    vendor/qcom/opensource/usb/etc
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -364,10 +365,14 @@ PRODUCT_PACKAGES_DEBUG += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.qti \
-    android.hardware.usb.gadget-service.qti \
-    usb_compositions.conf \
+    android.hardware.usb.gadget-service.qti
+
+PRODUCT_PACKAGES += \
     android.hardware.usb.accessory.prebuilt.xml \
-    android.hardware.usb.host.prebuilt.xml
+    android.hardware.usb.host.prebuilt.xml \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    usb_compositions.conf
 
 # Vendor API
 BOARD_SHIPPING_API_LEVEL := 34

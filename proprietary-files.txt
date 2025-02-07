@@ -2368,9 +2368,7 @@ vendor/bin/init.qcom.class_core.sh
 vendor/bin/init.qcom.early_boot.sh
 vendor/bin/init.qcom.post_boot.sh
 vendor/bin/init.qcom.sh
-vendor/bin/init.qcom.usb.sh
 vendor/etc/init/hw/init.qcom.rc
-vendor/etc/init/hw/init.qcom.usb.rc
 
 # Kernel
 vendor/bin/init.kernel.post_boot-pineapple.sh
