@@ -2,5 +2,9 @@
 persist.camera.                         u:object_r:vendor_camera_prop:s0
 ro.camera.                              u:object_r:vendor_camera_prop:s0
 
+# Hardware
+ro.mediatek.platform                    u:object_r:exported_default_prop:s0
+ro.chipname                             u:object_r:exported_default_prop:s0
+
 # MIUI
 ro.product.marketname                   u:object_r:exported_default_prop:s0 exact string
