@@ -33,8 +33,6 @@ void LockoutTracker::reset(bool dueToTimeout) {
 }
 
 void LockoutTracker::addFailedAttempt() {
-    bool enabled = Fingerprint::cfg().get<bool>("lockout_enable");
-    if (enabled) {
         mFailedCount++;
         mFailedCountTimed++;
         int32_t lockoutTimedThreshold =
@@ -50,9 +48,6 @@ void LockoutTracker::addFailedAttempt() {
                 mLockoutTimedStart = Util::getSystemNanoTime();
             }
         }
-    } else {
-        reset();
-    }
 }
 
 LockoutTracker::LockoutMode LockoutTracker::getMode() {

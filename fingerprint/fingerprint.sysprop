@@ -263,15 +263,6 @@ prop {
     api_name: "lockout"
 }
 
-# whether support lockout based on the failed auth attempts (default: false)
-prop {
-    prop_name: "persist.vendor.fingerprint.lockout_enable"
-    type: Boolean
-    scope: Public
-    access: ReadWrite
-    api_name: "lockout_enable"
-}
-
 # temporarily lockout threshold in number of consecutive failed auth attempts (default: 5)
 prop {
     prop_name: "persist.vendor.fingerprint.lockout_timed_threshold"

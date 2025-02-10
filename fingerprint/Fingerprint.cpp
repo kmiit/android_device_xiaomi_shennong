@@ -218,7 +218,6 @@ void Fingerprint::clearConfigSysprop() {
     RESET_CONFIG_O(detect_interaction);
     RESET_CONFIG_O(display_touch);
     RESET_CONFIG_O(control_illumination);
-    RESET_CONFIG_O(lockout_enable);
     RESET_CONFIG_O(lockout_timed_threshold);
     RESET_CONFIG_O(lockout_timed_duration);
     RESET_CONFIG_O(lockout_permanent_threshold);

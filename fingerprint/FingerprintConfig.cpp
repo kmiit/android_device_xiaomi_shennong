@@ -61,7 +61,6 @@ CREATE_GETTER_SETTER_WRAPPER(detect_interaction, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(display_touch, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(control_illumination, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(lockout, OptBool)
-CREATE_GETTER_SETTER_WRAPPER(lockout_enable, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(lockout_timed_threshold, OptInt32)
 CREATE_GETTER_SETTER_WRAPPER(lockout_timed_duration, OptInt32)
 CREATE_GETTER_SETTER_WRAPPER(lockout_permanent_threshold, OptInt32)
@@ -95,7 +94,6 @@ static Config::Data configData[] = {
         {NGS(display_touch), &Config::parseBool, "true"},
         {NGS(control_illumination), &Config::parseBool, "false"},
         {NGS(lockout), &Config::parseBool, "false"},
-        {NGS(lockout_enable), &Config::parseBool, "false"},
         {NGS(lockout_timed_threshold), &Config::parseInt32, "5"},
         {NGS(lockout_timed_duration), &Config::parseInt32, "10000"},
         {NGS(lockout_permanent_threshold), &Config::parseInt32, "20"},
