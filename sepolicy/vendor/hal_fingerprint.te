@@ -2,45 +2,25 @@ type vendor_hal_fingerprint_service_xiaomi, hal_service_type, protected_service,
 
 allow hal_fingerprint_default init:unix_stream_socket connectto;
 allow hal_fingerprint_default property_socket:sock_file write;
-allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_default self:netlink_socket { bind create read write };
 allow hal_fingerprint_default sysfs_touch_hostprocess:file { getattr open read write };
+allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl open read };
+allow hal_fingerprint_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl open read };
 allow hal_fingerprint_default vendor_fingerprint_data_file:dir create_dir_perms;
 allow hal_fingerprint_default vendor_fingerprint_data_file:file create_file_perms;
 allow hal_fingerprint_default vendor_fingerprint_data_file_fpdump:dir create_dir_perms;
 allow hal_fingerprint_default vendor_fingerprint_data_file_fpdump:file create_file_perms;
 allow hal_fingerprint_default vendor_fingerprint_device:chr_file rwx_file_perms;
+allow hal_fingerprint_default vendor_sysfs_displayfeature:dir { search };
+allow hal_fingerprint_default vendor_sysfs_displayfeature:file { getattr open read write };
 
 get_prop(hal_fingerprint_default, vendor_fp_prop)
 set_prop(hal_fingerprint_default, vendor_fp_prop)
 
+get_prop(hal_fingerprint_default, vendor_fp_info_prop)
+set_prop(hal_fingerprint_default, vendor_fp_info_prop)
+
 add_service(hal_fingerprint_default, vendor_hal_fingerprint_service_xiaomi)
 
-# Import from old sepolicy
-allow hal_fingerprint_default vendor_hal_perf_hwservice:hwservice_manager find;
-allow hal_fingerprint_default vendor_hal_perf_default:binder call;
-allow hal_fingerprint_default platform_app:binder { call transfer };
-allow hal_fingerprint_default platform_app:binder transfer;
-allow hal_fingerprint_default platform_app:fd *;
-allow hal_fingerprint_default system_app:binder { call transfer };
-allow hal_fingerprint_default system_app:binder transfer;
-allow hal_fingerprint_default system_app:fd *;
-allow hal_fingerprint_default sysfs:file write;
-allow hal_fingerprint_default vendor_sysfs_spss:dir search;
-allow hal_fingerprint_default vendor_sysfs_spss:file { open read };
-allow hal_fingerprint_default uhid_device:chr_file rw_file_perms;
-allow hal_fingerprint_default vendor_sysfs_graphics:dir r_dir_perms;
-allow hal_fingerprint_default vendor_sysfs_graphics:file rw_file_perms;
-allow hal_fingerprint_default input_device:dir r_dir_perms;
-allow hal_fingerprint_default input_device:chr_file rwx_file_perms;
-allow hal_fingerprint_default mnt_vendor_file:dir search;
-allow hal_fingerprint_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
-allow hal_fingerprint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
-allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
-allow hal_fingerprint_default vendor_sysfs_displayfeature:dir r_dir_perms;
-allow hal_fingerprint_default vendor_sysfs_displayfeature:file rw_file_perms;
-allow hal_fingerprint_default sysfs_tp_fodstatus:chr_file r_file_perms;
-allow hal_fingerprint_default sysfs_tp_fodstatus:file r_file_perms;
-allow hal_fingerprint_default touchfeature_device:chr_file rw_file_perms;
-allow hal_fingerprint_default surfaceflinger:binder transfer;
-get_prop(hal_fingerprint_default, vendor_panel_info_prop)
-set_prop(hal_fingerprint_default, vendor_fp_info_prop)
+binder_call(hal_fingerprint_default, vendor_hal_perf_default)
