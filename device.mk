@@ -145,8 +145,9 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.common.util \
-    android.hardware.biometrics.common.thread \
+    android.hardware.biometrics.fingerprint-service.shennong
+
+PRODUCT_PACKAGES += \
     android.hardware.fingerprint.prebuilt.xml
 
 # GPS
