@@ -48,9 +48,6 @@
 # GNSS
 /(odm|vendor/odm|vendor|system/vendor)/bin/hw/android\.hardware\.gnss.*-service-qti       u:object_r:vendor_hal_gnss_qti_exec:s0
 
-# # HAL
-/(vendor|system/vendor)/bin/hw/android\.hardware\.health-service\.xiaomi                  u:object_r:hal_health_default_exec:s0
-
 # IR
 /dev/ir_spi                               u:object_r:ir_spi_device:s0
 
