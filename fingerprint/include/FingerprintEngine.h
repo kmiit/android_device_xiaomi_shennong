@@ -31,6 +31,9 @@
 
 #include "LockoutTracker.h"
 
+#include <fstream>
+#include "fingerprint-xiaomi.h"
+
 using namespace ::aidl::android::hardware::biometrics::common;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
@@ -40,6 +43,7 @@ class FingerprintEngine {
     FingerprintEngine();
     virtual ~FingerprintEngine() {}
 
+    void setActiveGroup(int userId);
     void generateChallengeImpl(ISessionCallback* cb);
     void revokeChallengeImpl(ISessionCallback* cb, int64_t challenge);
     virtual void enrollImpl(ISessionCallback* cb, const keymaster::HardwareAuthToken& hat,
@@ -102,17 +106,28 @@ class FingerprintEngine {
     int64_t mOperationId;
     bool mFingerIsDown;
 
+    fingerprint_device_t* mDevice;
+    void setFingerStatus(bool pressed);
+
   private:
+    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
+    Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
+    AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
+
     static constexpr int32_t FINGERPRINT_ACQUIRED_VENDOR_BASE = 1000;
     static constexpr int32_t FINGERPRINT_ERROR_VENDOR_BASE = 1000;
     std::pair<AcquiredInfo, int32_t> convertAcquiredInfo(int32_t code);
     std::pair<Error, int32_t> convertError(int32_t code);
     int32_t getRandomInRange(int32_t bound1, int32_t bound2);
-    bool checkSensorLockout(ISessionCallback*);
     void clearLockout(ISessionCallback* cb, bool dueToTimeout = false);
     void waitForFingerDown(ISessionCallback* cb, const std::future<void>& cancel);
 
-    LockoutTracker mLockoutTracker;
+    fingerprint_device_t* openFingerprintHal(const char* class_name,
+                                                        const char* module_id);
+
+    template <typename T>
+    void set(const std::string &path, const T &value);
+    void setFodStatus(int value);
 
   protected:
     // lockout timer
@@ -123,7 +138,11 @@ class FingerprintEngine {
 
   public:
     void startLockoutTimer(int64_t timeout, ISessionCallback* cb);
-    bool getLockoutTimerStarted() { return isLockoutTimerStarted; }
+    bool getLockoutTimerStarted() { return isLockoutTimerStarted; };
+
+    void onAcquired(int32_t result, int32_t vendorCode);
+    bool checkSensorLockout(ISessionCallback*);
+    LockoutTracker mLockoutTracker;
 };
 
 }  // namespace aidl::android::hardware::biometrics::fingerprint

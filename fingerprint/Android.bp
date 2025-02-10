@@ -31,6 +31,7 @@ cc_binary {
         "android.hardware.keymaster-V4-ndk",
         "libbase",
         "libbinder_ndk",
+        "libhardware",
         "liblog",
     ],
     whole_static_libs: [
@@ -50,5 +51,6 @@ sysprop_library {
 cc_library_headers {
     name: "shennong_fingerprint_headers",
     export_include_dirs: ["include"],
+    header_libs: ["libhardware_headers"],
     vendor: true,
 }

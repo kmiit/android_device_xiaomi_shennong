@@ -41,9 +41,15 @@ SensorLocation FingerprintEngineUdfps::defaultSensorLocation() {
 }
 
 ndk::ScopedAStatus FingerprintEngineUdfps::onPointerDownImpl(int32_t /*pointerId*/,
-                                                                 int32_t /*x*/, int32_t /*y*/,
+                                                                 int32_t x, int32_t y,
                                                                  float /*minor*/, float /*major*/) {
     BEGIN_OP(0);
+
+    // mDevice->onPointerDown(mDevice, pointerId, x, y, minor, major);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_X, x);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_Y, y);
+    setFingerStatus(true);
+
     // verify whetehr touch coordinates/area matching sensor location ?
     mPointerDownTime = Util::getSystemNanoTime();
     if (Fingerprint::cfg().get<bool>("control_illumination")) {
@@ -56,6 +62,12 @@ ndk::ScopedAStatus FingerprintEngineUdfps::onPointerUpImpl(int32_t /*pointerId*/
     BEGIN_OP(0);
     mUiReadyTime = 0;
     mPointerDownTime = 0;
+
+    // mDevice->onPointerUp(mDevice, pointerId);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_X, 0);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_Y, 0);
+    setFingerStatus(false);
+
     return ndk::ScopedAStatus::ok();
 }
 

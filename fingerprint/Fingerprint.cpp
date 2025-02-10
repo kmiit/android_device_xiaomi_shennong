@@ -42,7 +42,11 @@ constexpr char SW_VERSION[] = "vendor/version/revision";
 
 }  // namespace
 
+static Fingerprint* sInstance;
+
 Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE) {
+    sInstance = this;  // keep track of the most recent instance
+
     std::string sensorTypeProp = Fingerprint::cfg().get<std::string>("type");
     if (sensorTypeProp == "" || sensorTypeProp == "default" || sensorTypeProp == "rear") {
         mSensorType = FingerprintSensorType::REAR;
@@ -61,6 +65,15 @@ Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE) {
     }
     LOG(INFO) << "sensorTypeProp:" << sensorTypeProp;
     LOG(INFO) << "ro.product.name=" << ::android::base::GetProperty("ro.product.name", "UNKNOWN");
+}
+
+void Fingerprint::notify(const fingerprint_msg_t* msg) {
+    Fingerprint* thisPtr = sInstance;
+    if (thisPtr == nullptr || thisPtr->mSession == nullptr || thisPtr->mSession->isClosed()) {
+        LOG(ERROR) << "Receiving callbacks before a session is opened.";
+        return;
+    }
+    thisPtr->mSession->notify(msg);
 }
 
 ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {

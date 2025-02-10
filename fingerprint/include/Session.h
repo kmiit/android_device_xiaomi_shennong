@@ -22,6 +22,8 @@
 #include "FingerprintEngine.h"
 #include "thread/WorkerThread.h"
 
+#include "Legacy2Aidl.h"
+
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 namespace common = aidl::android::hardware::biometrics::common;
@@ -107,7 +109,13 @@ class Session : public BnSession {
 
     bool isClosed();
 
+    void notify(const fingerprint_msg_t* msg);
+
   private:
+    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
+    Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
+    AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
+
     // Crashes the HAL if it's not currently idling because that would be an invalid state machine
     // transition. Otherwise, sets the scheduled state to the given state.
     void scheduleStateOrCrash(SessionState state);

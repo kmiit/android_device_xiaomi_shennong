@@ -49,6 +49,7 @@ Session::Session(int sensorId, int userId, std::shared_ptr<ISessionCallback> cb,
     CHECK(mCb);
 
     mDeathRecipient = AIBinder_DeathRecipient_new(onClientDeath);
+    mEngine->setActiveGroup(mUserId);
 }
 
 binder_status_t Session::linkToDeath(AIBinder* binder) {
@@ -251,7 +252,8 @@ ndk::ScopedAStatus Session::onPointerDown(int32_t pointerId, int32_t x, int32_t 
     LOG(INFO) << "onPointerDown";
     mEngine->notifyFingerdown();
     mWorker->schedule(Callable::from([this, pointerId, x, y, minor, major] {
-        mEngine->onPointerDownImpl(pointerId, x, y, minor, major);
+        bool isLockout = mEngine->checkSensorLockout(mCb.get());
+        if (!isLockout) mEngine->onPointerDownImpl(pointerId, x, y, minor, major);
         enterIdling();
     }));
     return ndk::ScopedAStatus::ok();
@@ -311,6 +313,156 @@ ndk::ScopedAStatus Session::onPointerCancelWithContext(const PointerContext& /*c
 
 ndk::ScopedAStatus Session::setIgnoreDisplayTouches(bool /*shouldIgnore*/) {
     return ndk::ScopedAStatus::ok();
+}
+
+// Translate from errors returned by traditional HAL (see fingerprint.h) to
+// AIDL-compliant Error
+Error Session::VendorErrorFilter(int32_t error, int32_t* vendorCode) {
+    *vendorCode = 0;
+
+    switch (error) {
+        case FINGERPRINT_ERROR_HW_UNAVAILABLE:
+            return Error::HW_UNAVAILABLE;
+        case FINGERPRINT_ERROR_UNABLE_TO_PROCESS:
+            return Error::UNABLE_TO_PROCESS;
+        case FINGERPRINT_ERROR_TIMEOUT:
+            return Error::TIMEOUT;
+        case FINGERPRINT_ERROR_NO_SPACE:
+            return Error::NO_SPACE;
+        case FINGERPRINT_ERROR_CANCELED:
+            return Error::CANCELED;
+        case FINGERPRINT_ERROR_UNABLE_TO_REMOVE:
+            return Error::UNABLE_TO_REMOVE;
+        case FINGERPRINT_ERROR_LOCKOUT: {
+            *vendorCode = FINGERPRINT_ERROR_LOCKOUT;
+            return Error::VENDOR;
+        }
+        default:
+            if (error >= FINGERPRINT_ERROR_VENDOR_BASE) {
+                // vendor specific code.
+                *vendorCode = error - FINGERPRINT_ERROR_VENDOR_BASE;
+                return Error::VENDOR;
+            }
+    }
+    LOG(ERROR) << "Unknown error from fingerprint vendor library: " << error;
+    return Error::UNABLE_TO_PROCESS;
+}
+
+// Translate acquired messages returned by traditional HAL (see fingerprint.h)
+// to AIDL-compliant AcquiredInfo
+AcquiredInfo Session::VendorAcquiredFilter(int32_t info, int32_t* vendorCode) {
+    *vendorCode = 0;
+
+    switch (info) {
+        case FINGERPRINT_ACQUIRED_GOOD:
+            return AcquiredInfo::GOOD;
+        case FINGERPRINT_ACQUIRED_PARTIAL:
+            return AcquiredInfo::PARTIAL;
+        case FINGERPRINT_ACQUIRED_INSUFFICIENT:
+            return AcquiredInfo::INSUFFICIENT;
+        case FINGERPRINT_ACQUIRED_IMAGER_DIRTY:
+            return AcquiredInfo::SENSOR_DIRTY;
+        case FINGERPRINT_ACQUIRED_TOO_SLOW:
+            return AcquiredInfo::TOO_SLOW;
+        case FINGERPRINT_ACQUIRED_TOO_FAST:
+            return AcquiredInfo::TOO_FAST;
+        default:
+            if (info >= FINGERPRINT_ACQUIRED_VENDOR_BASE) {
+                // vendor specific code.
+                *vendorCode = info - FINGERPRINT_ACQUIRED_VENDOR_BASE;
+                return AcquiredInfo::VENDOR;
+            }
+    }
+
+    LOG(ERROR) << "Unknown acquired message from fingerprint vendor library: " << info;
+    return AcquiredInfo::INSUFFICIENT;
+}
+
+void Session::notify(const fingerprint_msg_t* msg) {
+    // const uint64_t devId = reinterpret_cast<uint64_t>(mDevice);
+    switch (msg->type) {
+        case FINGERPRINT_ERROR: {
+            int32_t vendorCode = 0;
+            Error result = VendorErrorFilter(msg->data.error, &vendorCode);
+            LOG(INFO) << "onError(" << static_cast<int>(result) << ", " << vendorCode << ")";
+            mCb->onError(result, vendorCode);
+        } break;
+        case FINGERPRINT_ACQUIRED: {
+            int32_t vendorCode = 0;
+            AcquiredInfo result =
+                    VendorAcquiredFilter(msg->data.acquired.acquired_info, &vendorCode);
+            LOG(INFO) << "onAcquired(" << static_cast<int>(result) << ", " << vendorCode << ")";
+            mEngine->onAcquired(static_cast<int32_t>(result), vendorCode);
+            // don't process vendor messages further since frameworks try to disable
+            // udfps display mode on vendor acquired messages but our sensors send a
+            // vendor message during processing...
+            if (result != AcquiredInfo::VENDOR) {
+                mCb->onAcquired(result, vendorCode);
+            }
+        } break;
+        case FINGERPRINT_TEMPLATE_ENROLLING: {
+            LOG(INFO) << "onEnrollResult(fid=" << msg->data.enroll.finger
+                        << ", rem=" << msg->data.enroll.samples_remaining << ")";
+            mCb->onEnrollmentProgress(msg->data.enroll.finger,
+                                      msg->data.enroll.samples_remaining);
+        } break;
+        case FINGERPRINT_TEMPLATE_REMOVED: {
+            LOG(INFO) << "onRemove(fid=" << msg->data.removed.finger
+                        << ", rem=" << msg->data.removed.remaining_templates << ")";
+            std::vector<int> enrollments;
+            enrollments.push_back(msg->data.removed.finger);
+            mCb->onEnrollmentsRemoved(enrollments);
+        } break;
+        case FINGERPRINT_AUTHENTICATED: {
+            LOG(INFO) << "onAuthenticated(fid=" << msg->data.authenticated.finger.fid << ")";
+            if (msg->data.authenticated.finger.fid != 0) {
+                const hw_auth_token_t hat = msg->data.authenticated.hat;
+                keymaster::HardwareAuthToken authToken;
+                translate(hat, authToken);
+
+                mCb->onAuthenticationSucceeded(msg->data.authenticated.finger.fid, authToken);
+                mEngine->mLockoutTracker.reset(true);
+            } else {
+                mCb->onAuthenticationFailed();
+                mEngine->mLockoutTracker.addFailedAttempt();
+                mEngine->checkSensorLockout(mCb.get());
+            }
+            mEngine->onPointerUpImpl(0);
+        } break;
+        case FINGERPRINT_TEMPLATE_ENUMERATING: {
+            LOG(INFO) << "onEnumerate(fid=" << msg->data.enumerated.finger 
+                        << ", rem=" << msg->data.enumerated.remaining_templates << ")";
+            static std::vector<int> enrollments;
+            enrollments.push_back(msg->data.enumerated.finger);
+            if (msg->data.enumerated.remaining_templates == 0) {
+                mCb->onEnrollmentsEnumerated(enrollments);
+                enrollments.clear();
+            }
+        } break;
+        case FINGERPRINT_CHALLENGE_GENERATED: {
+            int64_t challenge = msg->data.extend.data;
+            LOG(INFO) << "onChallengeGenerated: " << challenge;
+            mCb->onChallengeGenerated(challenge);
+        } break;
+        case FINGERPRINT_CHALLENGE_REVOKED: {
+            int64_t challenge = msg->data.extend.data;
+            LOG(INFO) << "onChallengeRevoked: " << challenge;
+            mCb->onChallengeRevoked(challenge);
+        } break;
+        case FINGERPRINT_AUTHENTICATOR_ID_RETRIEVED: {
+            int auth_id = msg->data.extend.data;
+            LOG(INFO) << "onAuthenticatorIDRetrieved: " << auth_id;
+            mEngine->onPointerUpImpl(0);
+            mCb->onAuthenticatorIdRetrieved(auth_id);
+        } break;
+        case FINGERPRINT_AUTHENTICATOR_ID_INVALIDATED: {
+            int64_t new_auth_id = msg->data.extend.data;
+            LOG(INFO) <<"onAuthenticatorIDInvalidated, new auth id: " << new_auth_id;
+            mCb->onAuthenticatorIdInvalidated(new_auth_id);
+        } break;
+        default:
+            LOG(ERROR) << "received unknown message: " << msg->type;
+    }
 }
 
 }  // namespace aidl::android::hardware::biometrics::fingerprint

@@ -53,6 +53,8 @@ class Fingerprint : public BnFingerprint {
     void resetConfigToDefault();
     static const char* type2String(FingerprintSensorType type);
 
+    static void notify(const fingerprint_msg_t* msg);
+
   private:
     void onHelp(int);
     void onSimFingerDown();
