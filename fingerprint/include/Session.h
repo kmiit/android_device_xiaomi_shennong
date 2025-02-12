@@ -29,21 +29,6 @@ namespace aidl::android::hardware::biometrics::fingerprint {
 namespace common = aidl::android::hardware::biometrics::common;
 namespace keymaster = aidl::android::hardware::keymaster;
 
-enum class SessionState {
-    IDLING,
-    CLOSED,
-    GENERATING_CHALLENGE,
-    REVOKING_CHALLENGE,
-    ENROLLING,
-    AUTHENTICATING,
-    DETECTING_INTERACTION,
-    ENUMERATING_ENROLLMENTS,
-    REMOVING_ENROLLMENTS,
-    GETTING_AUTHENTICATOR_ID,
-    INVALIDATING_AUTHENTICATOR_ID,
-    RESETTING_LOCKOUT,
-};
-
 void onClientDeath(void* cookie);
 
 class Session : public BnSession {
@@ -110,25 +95,7 @@ class Session : public BnSession {
     bool isClosed();
 
     void notify(const fingerprint_msg_t* msg);
-
   private:
-    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
-    Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
-    AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
-
-    // Crashes the HAL if it's not currently idling because that would be an invalid state machine
-    // transition. Otherwise, sets the scheduled state to the given state.
-    void scheduleStateOrCrash(SessionState state);
-
-    // Crashes the HAL if the provided state doesn't match the previously scheduled state.
-    // Otherwise, transitions into the provided state, clears the scheduled state, and notifies
-    // the client about the transition by calling ISessionCallback#onStateChanged.
-    void enterStateOrCrash(SessionState state);
-
-    // Sets the current state to SessionState::IDLING and notifies the client about the transition
-    // by calling ISessionCallback#onStateChanged.
-    void enterIdling();
-
     // The sensor and user IDs for which this session was created.
     int32_t mSensorId;
     int32_t mUserId;
@@ -147,11 +114,7 @@ class Session : public BnSession {
     // Worker thread that allows to schedule tasks for asynchronous execution.
     WorkerThread* mWorker;
 
-    // Simple representation of the session's state machine. These are atomic because they can be
-    // modified from both the main and the worker threads.
-    std::atomic<SessionState> mScheduledState;
-    std::atomic<SessionState> mCurrentState;
-
+    bool mIsClosed;
     // Binder death handler.
     AIBinder_DeathRecipient* mDeathRecipient;
 };

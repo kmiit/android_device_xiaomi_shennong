@@ -38,8 +38,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.rongcard\.eid@1\.0-service                         u:object_r:hal_eid_default_exec:s0
 
 # Fingerprint
-/data/vendor/fpdump(/.*)?                                                                 u:object_r:vendor_fingerprint_data_file_fpdump:s0
-/data/vendor/goodix(/.*)?                                                                 u:object_r:vendor_fingerprint_data_file:s0
 /dev/goodix_fp                                                                            u:object_r:vendor_fingerprint_device:s0
 /mnt/vendor/persist/goodix(/.*)?                                                          u:object_r:vendor_fingerprint_data_file:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.xiaomi                 u:object_r:hal_fingerprint_default_exec:s0

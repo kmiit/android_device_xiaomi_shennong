@@ -19,9 +19,6 @@
 #include <aidl/android/hardware/biometrics/fingerprint/BnFingerprint.h>
 
 #include "FingerprintEngine.h"
-#include "FingerprintEngineRear.h"
-#include "FingerprintEngineSide.h"
-#include "FingerprintEngineUdfps.h"
 
 #include "FingerprintConfig.h"
 #include "Session.h"
@@ -38,9 +35,6 @@ class Fingerprint : public BnFingerprint {
     ndk::ScopedAStatus createSession(int32_t sensorId, int32_t userId,
                                      const std::shared_ptr<ISessionCallback>& cb,
                                      std::shared_ptr<ISession>* out) override;
-    binder_status_t dump(int fd, const char** args, uint32_t numArgs);
-    binder_status_t handleShellCommand(int in, int out, int err, const char** argv, uint32_t argc);
-    bool connected() { return mEngine != nullptr; }
 
     static FingerprintConfig& cfg() {
         static FingerprintConfig* cfg = nullptr;
@@ -50,16 +44,10 @@ class Fingerprint : public BnFingerprint {
         }
         return *cfg;
     }
-    void resetConfigToDefault();
-    static const char* type2String(FingerprintSensorType type);
 
     static void notify(const fingerprint_msg_t* msg);
 
   private:
-    void onHelp(int);
-    void onSimFingerDown();
-    void clearConfigSysprop();
-
     std::unique_ptr<FingerprintEngine> mEngine;
     WorkerThread mWorker;
     std::shared_ptr<Session> mSession;

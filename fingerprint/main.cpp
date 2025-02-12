@@ -28,10 +28,9 @@ int main()
 
     std::shared_ptr<Fingerprint> hal = ndk::SharedRefBase::make<Fingerprint>();
     const std::string instance = std::string(Fingerprint::descriptor) + "/default";
-    auto binder = hal->asBinder();
 
     binder_status_t status =
-        AServiceManager_registerLazyService(binder.get(), instance.c_str());
+        AServiceManager_registerLazyService(hal->asBinder().get(), instance.c_str());
     CHECK_EQ(status, STATUS_OK);
 
     ABinderProcess_joinThreadPool();

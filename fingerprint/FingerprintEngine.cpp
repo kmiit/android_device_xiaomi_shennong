@@ -32,8 +32,7 @@ using ::android::base::ParseInt;
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 FingerprintEngine::FingerprintEngine()
-    : mWorkMode(WorkMode::kIdle),
-      isLockoutTimerSupported(true) {
+    : isLockoutTimerSupported(true) {
     if (mDevice) {
         LOG(INFO) << "Fingerprint HAL already opened";
     } else {
@@ -68,12 +67,11 @@ FingerprintEngine::FingerprintEngine()
 }
 
 void FingerprintEngine::setActiveGroup(int userId) {
+    LOG(INFO) << __func__;
     auto path = std::format("/data/vendor_de/{}/fpdata/", userId);
-    if (mDevice) {
-        LOG(INFO) << "setActiveGroup";
-        mDevice->setActiveGroup(mDevice, userId, path.c_str());
-    } else {
-        LOG(ERROR) << "Failed to set active group!";
+    uint64_t error = mDevice->setActiveGroup(mDevice, userId, path.c_str());
+    if (error) {
+        LOG(INFO) << "Failed to set active group: " << error;
     }
 }
 
@@ -119,7 +117,7 @@ fingerprint_device_t* FingerprintEngine::openFingerprintHal(const char* class_na
 }
 
 void FingerprintEngine::onAcquired(int32_t result, int32_t vendorCode) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     LOG(INFO) << " result: " << result << " vendorCode: " << vendorCode;
     if (result != FINGERPRINT_ACQUIRED_VENDOR) {
         setFingerStatus(false);
@@ -141,7 +139,7 @@ void FingerprintEngine::setFodStatus(int value) {
 }
 
 void FingerprintEngine::setFingerStatus(bool pressed) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_STATUS, pressed ? PARAM_FOD_PRESSED : PARAM_FOD_RELEASED);
     mDevice->goodixExtCmd(mDevice, COMMAND_NIT, pressed ? PARAM_NIT_FOD : PARAM_NIT_NONE);
 
@@ -157,12 +155,12 @@ void FingerprintEngine::set(const std::string &path, const T &value){
 }
 
 void FingerprintEngine::generateChallengeImpl(ISessionCallback* /*cb*/) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     mDevice->generateChallenge(mDevice);
 }
 
 void FingerprintEngine::revokeChallengeImpl(ISessionCallback* /*cb*/, int64_t challenge) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     uint64_t error = mDevice->revokeChallenge(mDevice, challenge);
     if (error) {
         LOG(ERROR) << "Failed to revoke challenge=" << challenge
@@ -172,85 +170,8 @@ void FingerprintEngine::revokeChallengeImpl(ISessionCallback* /*cb*/, int64_t ch
 
 void FingerprintEngine::enrollImpl(ISessionCallback* cb,
                                        const keymaster::HardwareAuthToken& hat,
-                                       const std::future<void>& cancel) {
-    BEGIN_OP(0);
-
-    // Do proper HAT verification in the real implementation.
-    if (hat.mac.empty()) {
-        LOG(ERROR) << "Fail: hat";
-        cb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorError */);
-        return;
-    }
-
-    waitForFingerDown(cb, cancel);
-
-    updateContext(WorkMode::kEnroll, cb, const_cast<std::future<void>&>(cancel), 0, hat);
-}
-
-void FingerprintEngine::authenticateImpl(ISessionCallback* cb, int64_t operationId,
-                                             const std::future<void>& cancel) {
-    BEGIN_OP(0);
-
-    waitForFingerDown(cb, cancel);
-
-    updateContext(WorkMode::kAuthenticate, cb, const_cast<std::future<void>&>(cancel), operationId,
-                  keymaster::HardwareAuthToken());
-}
-
-void FingerprintEngine::detectInteractionImpl(ISessionCallback* cb,
-                                                  const std::future<void>& cancel) {
-    BEGIN_OP(0);
-
-    auto detectInteractionSupported = Fingerprint::cfg().get<bool>("detect_interaction");
-    if (!detectInteractionSupported) {
-        LOG(ERROR) << "Detect interaction is not supported";
-        cb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorError */);
-        return;
-    }
-
-    waitForFingerDown(cb, cancel);
-
-    updateContext(WorkMode::kDetectInteract, cb, const_cast<std::future<void>&>(cancel), 0,
-                  keymaster::HardwareAuthToken());
-}
-
-void FingerprintEngine::updateContext(WorkMode mode, ISessionCallback* cb,
-                                          std::future<void>& cancel, int64_t operationId,
-                                          const keymaster::HardwareAuthToken& hat) {
-    mCancel = std::move(cancel);
-    mWorkMode = mode;
-    mCb = cb;
-    mOperationId = operationId;
-    mHat = hat;
-}
-
-void FingerprintEngine::fingerDownAction() {
-    bool isTerminal = false;
+                                       const std::future<void>& /*cancel*/) {
     LOG(INFO) << __func__;
-    switch (mWorkMode) {
-        case WorkMode::kAuthenticate:
-            isTerminal = onAuthenticateFingerDown(mCb, mOperationId, mCancel);
-            break;
-        case WorkMode::kEnroll:
-            isTerminal = onEnrollFingerDown(mCb, mHat, mCancel);
-            break;
-        case WorkMode::kDetectInteract:
-            isTerminal = onDetectInteractFingerDown(mCb, mCancel);
-            break;
-        default:
-            LOG(WARNING) << "unexpected mode: on fingerDownAction(), " << (int)mWorkMode;
-            break;
-    }
-
-    if (isTerminal) {
-        mWorkMode = WorkMode::kIdle;
-    }
-}
-
-bool FingerprintEngine::onEnrollFingerDown(ISessionCallback* cb,
-                                               const keymaster::HardwareAuthToken& hat,
-                                               const std::future<void>& cancel) {
-    BEGIN_OP(getLatency(Fingerprint::cfg().getopt<OptIntVec>("operation_enroll_latency")));
 
     hw_auth_token_t authToken;
     translate(hat, authToken);
@@ -259,111 +180,60 @@ bool FingerprintEngine::onEnrollFingerDown(ISessionCallback* cb,
         LOG(ERROR) << "enroll failed: " << error;
         cb->onError(Error::UNABLE_TO_PROCESS, error);
     }
-    if (shouldCancel(cancel)){
-        LOG(ERROR) << "Fail: cancel";
-        cb->onError(Error::CANCELED, 0 /* vendorCode */);
-    }
-    return true;
+
 }
 
-bool FingerprintEngine::onAuthenticateFingerDown(ISessionCallback* cb,
-                                                     int64_t /* operationId */,
-                                                     const std::future<void>& cancel) {
-    BEGIN_OP(getLatency(Fingerprint::cfg().getopt<OptIntVec>("operation_authenticate_latency")));
-
-    // got lockout?
-    if (checkSensorLockout(cb)) {
-        return LockoutTracker::LockoutMode::kPermanent == mLockoutTracker.getMode();
-    }
-
-    if (shouldCancel(cancel)) {
-        LOG(ERROR) << "Fail: cancel";
-        cb->onError(Error::CANCELED, 0 /* vendorCode */);
-        return true;
-    }
+void FingerprintEngine::authenticateImpl(ISessionCallback* cb, int64_t operationId,
+                                             const std::future<void>& /*cancel*/) {
+    LOG(INFO) << __func__;
 
     int error = mDevice->authenticate(mDevice, operationId);
     if (error) {
         LOG(ERROR) << "authenticate failed: " << error;
+        cb->onError(Error::UNABLE_TO_PROCESS, error);
     }
-    return true;
 }
 
-bool FingerprintEngine::onDetectInteractFingerDown(ISessionCallback* cb,
-                                                       const std::future<void>& cancel) {
-    BEGIN_OP(getLatency(
-            Fingerprint::cfg().getopt<OptIntVec>("operation_detect_interaction_latency")));
+void FingerprintEngine::detectInteractionImpl(ISessionCallback* cb,
+                                                  const std::future<void>& /*cancel*/) {
+    LOG(INFO) << __func__;
 
-    int32_t duration =
-            Fingerprint::cfg().get<std::int32_t>("operation_detect_interaction_duration");
-
-    auto acquired = Fingerprint::cfg().get<std::string>("operation_detect_interaction_acquired");
-    auto acquiredInfos = Util::parseIntSequence(acquired);
-    int N = acquiredInfos.size();
-    int64_t now = Util::getSystemNanoTime();
-
-    if (N == 0) {
-        LOG(ERROR) << "Fail to parse detect interaction acquired info: " + acquired;
+    auto detectInteractionSupported = Fingerprint::cfg().get<bool>("detect_interaction");
+    if (!detectInteractionSupported) {
+        LOG(ERROR) << "Detect interaction is not supported";
         cb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorError */);
-        return true;
+        return;
     }
-
-    int i = 0;
-    do {
-        auto err = Fingerprint::cfg().get<std::int32_t>("operation_detect_interaction_error");
-        if (err != 0) {
-            LOG(ERROR) << "Fail: operation_detect_interaction_error";
-            auto ec = convertError(err);
-            cb->onError(ec.first, ec.second);
-            return true;
-        }
-
-        if (shouldCancel(cancel)) {
-            LOG(ERROR) << "Fail: cancel";
-            cb->onError(Error::CANCELED, 0 /* vendorCode */);
-            return true;
-        }
-
-        if (i < N) {
-            auto ac = convertAcquiredInfo(acquiredInfos[i]);
-            cb->onAcquired(ac.first, ac.second);
-            i++;
-        }
-        SLEEP_MS(duration / N);
-    } while (!Util::hasElapsed(now, duration));
-
-    cb->onInteractionDetected();
-
-    return true;
 }
 
-void FingerprintEngine::enumerateEnrollmentsImpl(ISessionCallback* /*cb*/) {
-    BEGIN_OP(0);
+void FingerprintEngine::enumerateEnrollmentsImpl(ISessionCallback* cb) {
+    LOG(INFO) << __func__;
     int error = mDevice->enumerate(mDevice);
     if (error) {
         LOG(ERROR) << "enumerate failed: " << error;
+        cb->onError(Error::UNABLE_TO_PROCESS, error);
     }
 }
 
 void FingerprintEngine::removeEnrollmentsImpl(ISessionCallback * /*cb*/,
                                               const std::vector<int32_t> &enrollmentIds){
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     mDevice->remove(mDevice, enrollmentIds.data(), enrollmentIds.size());
 }
 
 void FingerprintEngine::getAuthenticatorIdImpl(ISessionCallback* /*cb*/) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     mDevice->getAuthenticatorId(mDevice);
 }
 
 void FingerprintEngine::invalidateAuthenticatorIdImpl(ISessionCallback* /*cb*/) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     mDevice->invalidateAuthenticatorId(mDevice);
 }
 
 void FingerprintEngine::resetLockoutImpl(ISessionCallback* cb,
                                              const keymaster::HardwareAuthToken& hat) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     if (hat.mac.empty()) {
         LOG(ERROR) << "Fail: hat in resetLockout()";
         cb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorError */);
@@ -374,38 +244,48 @@ void FingerprintEngine::resetLockoutImpl(ISessionCallback* cb,
 }
 
 void FingerprintEngine::clearLockout(ISessionCallback* cb, bool dueToTimeout) {
-    Fingerprint::cfg().set<bool>("lockout", false);
     cb->onLockoutCleared();
     mLockoutTracker.reset(dueToTimeout);
 }
 
-ndk::ScopedAStatus FingerprintEngine::onPointerDownImpl(int32_t /*pointerId*/, int32_t /*x*/,
-                                                            int32_t /*y*/, float /*minor*/,
+ndk::ScopedAStatus FingerprintEngine::onPointerDownImpl(int32_t /*pointerId*/, int32_t x,
+                                                            int32_t y, float /*minor*/,
                                                             float /*major*/) {
-    BEGIN_OP(0);
-    fingerDownAction();
+    LOG(INFO) << __func__;
+    // mDevice->onPointerDown(mDevice, pointerId, x, y, minor, major);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_X, x);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_Y, y);
+    setFingerStatus(true);
+
+    // verify whetehr touch coordinates/area matching sensor location ?
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus FingerprintEngine::onPointerUpImpl(int32_t /*pointerId*/) {
-    BEGIN_OP(0);
-    mFingerIsDown = false;
+    LOG(INFO) << __func__;
+
+    // mDevice->onPointerUp(mDevice, pointerId);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_X, 0);
+    mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_Y, 0);
+    setFingerStatus(false);
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus FingerprintEngine::onUiReadyImpl() {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     return ndk::ScopedAStatus::ok();
 }
 
-bool FingerprintEngine::getSensorLocationConfig(SensorLocation& out) {
+SensorLocation FingerprintEngine::getSensorLocation() {
+    SensorLocation location;
+
     auto loc = Fingerprint::cfg().get<std::string>("sensor_location");
     auto isValidStr = false;
     auto dim = Util::split(loc, ":");
 
     if (dim.size() < 3 or dim.size() > 4) {
         if (!loc.empty()) LOG(WARNING) << "Invalid sensor location input (x:y:radius):" + loc;
-        return false;
+        return location;
     } else {
         int32_t x, y, r;
         std::string d = "";
@@ -416,23 +296,10 @@ bool FingerprintEngine::getSensorLocationConfig(SensorLocation& out) {
             d = dim[3];
         }
         if (isValidStr)
-            out = {.sensorLocationX = x, .sensorLocationY = y, .sensorRadius = r, .display = d};
+            location = {.sensorLocationX = x, .sensorLocationY = y, .sensorRadius = r, .display = d};
 
-        return isValidStr;
-    }
-}
-SensorLocation FingerprintEngine::getSensorLocation() {
-    SensorLocation location;
-
-    if (getSensorLocationConfig(location)) {
         return location;
-    } else {
-        return defaultSensorLocation();
     }
-}
-
-SensorLocation FingerprintEngine::defaultSensorLocation() {
-    return SensorLocation();
 }
 
 std::pair<AcquiredInfo, int32_t> FingerprintEngine::convertAcquiredInfo(int32_t code) {
@@ -459,36 +326,6 @@ std::pair<Error, int32_t> FingerprintEngine::convertError(int32_t code) {
     return res;
 }
 
-int32_t FingerprintEngine::getLatency(
-        const std::vector<std::optional<std::int32_t>>& latencyIn) {
-    int32_t res = DEFAULT_LATENCY;
-
-    std::vector<int32_t> latency;
-    for (auto x : latencyIn)
-        if (x.has_value()) latency.push_back(*x);
-
-    switch (latency.size()) {
-        case 0:
-            break;
-        case 1:
-            res = latency[0];
-            break;
-        case 2:
-            res = getRandomInRange(latency[0], latency[1]);
-            break;
-        default:
-            LOG(ERROR) << "ERROR: unexpected input of size " << latency.size();
-            break;
-    }
-
-    return res;
-}
-
-int32_t FingerprintEngine::getRandomInRange(int32_t bound1, int32_t bound2) {
-    std::uniform_int_distribution<int32_t> dist(std::min(bound1, bound2), std::max(bound1, bound2));
-    return dist(mRandom);
-}
-
 bool FingerprintEngine::checkSensorLockout(ISessionCallback* cb) {
     LockoutTracker::LockoutMode lockoutMode = mLockoutTracker.getMode();
     if (lockoutMode == LockoutTracker::LockoutMode::kPermanent) {
@@ -507,7 +344,7 @@ bool FingerprintEngine::checkSensorLockout(ISessionCallback* cb) {
 }
 
 void FingerprintEngine::startLockoutTimer(int64_t timeout, ISessionCallback* cb) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     std::function<void(ISessionCallback*)> action =
             std::bind(&FingerprintEngine::lockoutTimerExpired, this, std::placeholders::_1);
     std::thread([timeout, action, cb]() {
@@ -518,28 +355,11 @@ void FingerprintEngine::startLockoutTimer(int64_t timeout, ISessionCallback* cb)
     isLockoutTimerStarted = true;
 }
 void FingerprintEngine::lockoutTimerExpired(ISessionCallback* cb) {
-    BEGIN_OP(0);
+    LOG(INFO) << __func__;
     if (!isLockoutTimerAborted) {
         clearLockout(cb, true);
     }
     isLockoutTimerStarted = false;
     isLockoutTimerAborted = false;
 }
-
-void FingerprintEngine::waitForFingerDown(ISessionCallback* cb,
-                                              const std::future<void>& cancel) {
-    if (mFingerIsDown) {
-        LOG(WARNING) << "waitForFingerDown: mFingerIsDown==true already!";
-    }
-
-    while (!mFingerIsDown) {
-        if (shouldCancel(cancel)) {
-            LOG(ERROR) << "waitForFingerDown, Fail: cancel";
-            cb->onError(Error::CANCELED, 0 /* vendorCode */);
-            return;
-        }
-        SLEEP_MS(10);
-    }
-}
-
 }  // namespace aidl::android::hardware::biometrics::fingerprint

@@ -20,11 +20,15 @@
 #include <stdint.h>
 #include <string>
 
+#define LOCKOUT_TIMED_THRESHOLD 5
+#define LOCKOUT_TIMED_DURATION 10000
+#define LOCKOUT_PERMANENT_THRESHOLD 20
+
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 class LockoutTracker {
   public:
-    LockoutTracker() : mFailedCount(0), mFailedCountTimed(0) {}
+    LockoutTracker() : mFailedCount(0) {}
     ~LockoutTracker() {}
 
     enum class LockoutMode : int8_t { kNone = 0, kTimed, kPermanent };
@@ -33,18 +37,9 @@ class LockoutTracker {
     LockoutMode getMode();
     void addFailedAttempt();
     int64_t getLockoutTimeLeft();
-    inline std::string toString() const {
-        std::ostringstream os;
-        os << "----- LockoutTracker:: -----" << std::endl;
-        os << "LockoutTracker::mFailedCount:" << mFailedCount;
-        os << ", LockoutTracker::mCurrentMode:" << (int)mCurrentMode;
-        os << std::endl;
-        return os.str();
-    }
 
   private:
     int32_t mFailedCount;
-    int32_t mFailedCountTimed;
     int64_t mLockoutTimedStart;
     LockoutMode mCurrentMode;
 };
