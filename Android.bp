@@ -44,3 +44,9 @@ install_symlink {
     installed_location: "rfs/msm/mpss/readonly/firmware",
     symlink_target: "/vendor/modem_firmware",
 }
+
+mkdir {
+    name: "vendor_modem_firmware_mountpoint",
+    dir: "modem_firmware",
+    vendor: true,
+}
