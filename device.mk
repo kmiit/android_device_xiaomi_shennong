@@ -277,10 +277,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.qti.qspa-service
 
-# Ril
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full
-
 # RIL modem_firmware symlink
 PRODUCT_PACKAGES += \
     rfs_msm_mpss_readonly_modem_firmware_symlink \
