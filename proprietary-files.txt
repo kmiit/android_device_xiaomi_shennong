@@ -3220,7 +3220,6 @@ vendor/etc/vintf/manifest/vendor.qti.hardware.sensorscalibrate.xml
 vendor/etc/sensors/config/chre_dynamic_sensors.json
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sns_reg_config
-vendor/lib64/hw/sensors.dynamic_sensor_hal.so
 vendor/lib64/libqsh.so
 vendor/lib64/libsensor_calibration.so
 vendor/lib64/libsensorcal.so
