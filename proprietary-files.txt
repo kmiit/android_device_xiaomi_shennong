@@ -1572,6 +1572,7 @@ odm/lib64/vendor.xiaomi.hardware.bgservice@1.0.so
 odm/lib64/vendor.xiaomi.hardware.bgservice@1.0-impl.so
 vendor/etc/camera/cameraopt_vendor.json
 vendor/etc/vintf/manifest/vendor.xiaomi.hardware.quickcamera.xml
+vendor/framework/androidx.camera.extensions.impl.jar
 vendor/lib64/libcameraopt.so
 vendor/lib64/libhalide_hexagon_host.so
 vendor/lib64/libmialgo.so

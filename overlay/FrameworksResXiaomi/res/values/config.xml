@@ -45,9 +45,18 @@
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
-        <item>"/system/framework/framework.jar"</item>
-        <item>"/system/framework/services.jar"</item>
-        <item>"/system/bin/surfaceflinger"</item>
+        <item>/system/framework/framework.jar</item>
+        <item>/system/framework/services.jar</item>
+        <item>/system/bin/surfaceflinger</item>
+        <item>/apex/com.android.media/javalib/updatable-media.jar</item>
+        <item>/vendor/lib64/libllvm-qgl.so</item>
+        <item>/system/lib64/libhwui.so</item>
+        <item>/vendor/lib64/libllvm-glnext.so</item>
+        <item>/vendor/framework/androidx.camera.extensions.impl.jar</item>
+        <item>/system/lib64/libft2.so</item>
+        <item>/system/lib64/libGLESv2.so</item>
+        <item>/system/fonts/NotoColorEmoji.ttf</item>
+        <item>/system/framework/oat/arm64/apex@com.android.permission@javalib@service-permission.jar@classes.odex</item>
     </string-array>
 
     <!-- ComponentName of a dream to show whenever the system would otherwise have
