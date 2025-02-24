@@ -1,2 +1,2 @@
 allow init debugfs_tracing_debug:dir mounton;
-allow init sysfs_perf:file write;
+allow init sysfs_perf:file { open write };
