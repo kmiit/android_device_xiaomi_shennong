@@ -165,6 +165,10 @@ odm/lib64/bm4a73v08s12n59.bin
 odm/lib64/bm4a73v08s12n60.bin
 odm/lib64/bm4a73v08s12n61.bin
 odm/lib64/bm4a73v08s12n62.bin
+odm/lib64/rfs/dsp/libapn_dsp_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libapn_dsp_skel.so
+odm/lib64/rfs/dsp/libbitml_nsp_75na_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libbitml_nsp_75na_skel.so
+odm/lib64/rfs/dsp/libhdr_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libhdr_skel.so
+odm/lib64/rfs/dsp/libqsegnetengine_dsp_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libqsegnetengine_dsp_skel.so
 vendor/etc/hrtf5c.bin
 vendor/lib/rfsa/adsp/chre_qsh_shim.so
 vendor/lib/rfsa/adsp/libDspIOProxy_skel.so
@@ -1165,7 +1169,7 @@ odm/etc/vintf/manifest/vendor.qti.camera.provider.xml
 odm/etc/vintf/manifest/vendor.xiaomi.camera.aon-impl.xml
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.aidlbgservice-service.xml
 odm/lib64/camera/aon_front_1.pb;SYMLINK=vendor/lib64/camera/aon_front_1.pb
-odm/lib64/camera/bitmlconfig.bin
+odm/lib64/camera/bitmlconfig.bin;SYMLINK=vendor/lib64/camera/bitmlconfig.bin
 odm/lib64/camera/camxfl115indices.bin
 odm/lib64/camera/camxfl300v1indices.bin
 odm/lib64/camera/camxfl300v2indices.bin
