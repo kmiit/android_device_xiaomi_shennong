@@ -13,5 +13,6 @@ binder_call(system_app, hal_touchfeature_xiaomi_default)
 binder_call(system_app, vendor_hal_gatekeeper_qti)
 binder_call(system_app, vendor_hal_gnss_qti)
 binder_call(system_app, vendor_hal_keymint_qti)
+binder_call(system_app, vendor_hal_displayfeature_xiaomi_default)
 
 get_prop(system_app, vendor_thermal_normal_prop)

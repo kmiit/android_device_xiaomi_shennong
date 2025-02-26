@@ -22,6 +22,8 @@ allow hal_camera_default vendor_sysfs_displayfeature:dir search;
 allow hal_camera_default vendor_sysfs_displayfeature:file { open read };
 allow hal_camera_default vendor_sysfs_kgsl_proc:dir search;
 
+dontaudit hal_camera_default { shell_data_file system_data_file }:dir search;
+
 add_hwservice(hal_camera_default, hal_camera_mivi_hwservice)
 add_service(hal_camera_default, hal_aidlbgservice_xiaomi_service)
 add_service(hal_camera_default, hal_camera_aon_service)
