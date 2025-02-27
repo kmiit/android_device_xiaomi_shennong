@@ -44,4 +44,5 @@ bluetooth.profile.pbap.sim.enabled=true
 # Fingerprint
 persist.vendor.fingerprint.type=udfps
 persist.vendor.fingerprint.sensor_location=720:2532:128
+ro.hardware.fingerprint=goodix_fod
 ro.hardware.fp.fod=true

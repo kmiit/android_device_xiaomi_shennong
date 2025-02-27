@@ -75,8 +75,7 @@ class FingerprintEngine {
     void clearLockout(ISessionCallback* cb, bool dueToTimeout = false);
     void waitForFingerDown(ISessionCallback* cb, const std::future<void>& cancel);
 
-    fingerprint_device_t* openFingerprintHal(const char* class_name,
-                                                        const char* module_id);
+    fingerprint_device_t* openFingerprintHal();
 
     template <typename T>
     void set(const std::string &path, const T &value);

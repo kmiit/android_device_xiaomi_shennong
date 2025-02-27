@@ -30,15 +30,6 @@
 
 #define FINGERPRINT_ACQUIRED_VENDOR 7
 
-typedef struct fingerprint_hal {
-    const char* class_name;
-} fingerprint_hal_t;
-
-static const fingerprint_hal_t kModules[] = {
-        {"fortsense"},  {"fpc"},         {"fpc_fod"}, {"goodix"}, {"goodix:gf_fingerprint"},
-        {"goodix_fod"}, {"goodix_fod6"}, {"silead"},  {"syna"}, {"goodix_us"},
-};
-
 #define FINGERPRINT_MODULE_API_VERSION_2_1 HARDWARE_MODULE_API_VERSION(2, 1)
 #define FINGERPRINT_HARDWARE_MODULE_ID "fingerprint"
 

@@ -36,32 +36,12 @@ FingerprintEngine::FingerprintEngine()
     if (mDevice) {
         LOG(INFO) << "Fingerprint HAL already opened";
     } else {
-        for (auto& [module] : kModules) {
-            std::string class_name;
-            std::string class_module_id;
-
-            auto parts = Util::split(module, ":");
-
-            if (parts.size() == 2) {
-                class_name = parts[0];
-                class_module_id = parts[1];
-            } else {
-                class_name = module;
-                class_module_id = FINGERPRINT_HARDWARE_MODULE_ID;
-            }
-
-            mDevice = openFingerprintHal(class_name.c_str(), class_module_id.c_str());
-            if (!mDevice) {
-                LOG(ERROR) << "Can't open HAL module, class: " << class_name.c_str() 
-                    << ", module_id: " << class_module_id.c_str();
-                continue;
-            }
-            LOG(INFO) << "Opened fingerprint HAL, class: " << class_name.c_str() 
-                << ", module_id: " << class_module_id.c_str();
-            break;
-        }
+        mDevice = openFingerprintHal();
+        
         if (!mDevice) {
-            LOG(ERROR) << "Can't open any fingerprint HAL module";
+            LOG(ERROR) << "Can't open fingerprint HAL module, please check ro.hardware.${class}";
+        } else {
+            LOG(INFO) << "Opened fingerprint HAL module";
         }
     }
 }
@@ -75,12 +55,11 @@ void FingerprintEngine::setActiveGroup(int userId) {
     }
 }
 
-fingerprint_device_t* FingerprintEngine::openFingerprintHal(const char* class_name,
-                                                      const char* module_id) {
+fingerprint_device_t* FingerprintEngine::openFingerprintHal() {
     const hw_module_t* hw_mdl = nullptr;
 
     LOG(INFO) << "Opening fingerprint hal library...";
-    if (hw_get_module_by_class(module_id, class_name, &hw_mdl) != 0) {
+    if (hw_get_module(FINGERPRINT_HARDWARE_MODULE_ID, &hw_mdl) != 0) {
         LOG(ERROR) << "Can't open fingerprint HW Module";
         return nullptr;
     }
