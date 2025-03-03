@@ -402,6 +402,8 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
+$(call soong_config_set,qti_vibrator,effect_lib,libqtivibratoreffect.xiaomi)
+$(call soong_config_set,qti_vibrator,use_effect_stream,true)
 
 # WiFi
 PRODUCT_PACKAGES += \
