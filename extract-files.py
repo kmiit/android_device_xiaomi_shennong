@@ -48,7 +48,6 @@ lib_fixups: lib_fixups_user_type = {
         'audio.primary.pineapple',
         'libagmclient',
         'libpalclient',
-        'libwpa_client',
     ): lib_fixup_remove,
 }
 

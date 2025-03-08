@@ -1689,12 +1689,12 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile7.xml
 vendor/etc/default-permissions/com.qualcomm.qti.cne.xml
 vendor/etc/init/cnd.rc
 vendor/etc/vintf/manifest/vendor.qti.hardware.data.iwlandata.xml
-vendor/lib64/libcne.so;DISABLE_CHECKELF
+vendor/lib64/libcne.so
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libCneAppJni.so
 vendor/lib64/libcneoplookup.so
 vendor/lib64/libcneqmiutils.so
-vendor/lib64/libmasc.so;DISABLE_CHECKELF
+vendor/lib64/libmasc.so
 vendor/lib64/libshsc.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
@@ -2158,7 +2158,7 @@ vendor/app/CACertService/CACertService.apk
 vendor/bin/edgnss-daemon
 vendor/bin/engine-service
 vendor/bin/loc_launcher
-vendor/bin/lowi-server;DISABLE_CHECKELF
+vendor/bin/lowi-server
 vendor/bin/mlid
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
@@ -2914,7 +2914,7 @@ vendor/bin/hw/qcrilNrd
 vendor/bin/ks
 vendor/bin/nicmd
 vendor/bin/pd-mapper
-vendor/bin/qms;DISABLE_CHECKELF
+vendor/bin/qms
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
 vendor/bin/tlpd
