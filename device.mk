@@ -112,9 +112,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.prebuilt.xml \
     android.hardware.bluetooth_le.prebuilt.xml
 
-# Boot animation
-TARGET_BOOT_ANIMATION_RES := 1440
-
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
