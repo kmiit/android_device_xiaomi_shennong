@@ -178,10 +178,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, vendor/qcom/opensource/healthd-ext/health-vendor-product.mk)
 
 # IPACM
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml \
-    IPACM_Filter_cfg.xml
+$(call inherit-product, hardware/qcom-caf/sm8650/data-ipa-cfg-mgr/ipacm_vendor_product.mk)
 
 # IR Blaster
 PRODUCT_PACKAGES += \
