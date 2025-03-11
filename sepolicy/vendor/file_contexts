@@ -50,9 +50,6 @@
 # IR
 /dev/ir_spi                               u:object_r:ir_spi_device:s0
 
-# MiCharge
-/(vendor|system/vendor)/bin/hw/vendor.xiaomi.hardware.micharge-service    u:object_r:vendor_hal_micharge_xiaomi_default_exec:s0
-
 # Mlipay
 /(odm|vendor/odm|vendor|system/vendor)/bin/fidoca       u:object_r:hal_mfidoca_default_exec:s0
 /(odm|vendor/odm|vendor|system/vendor)/bin/mlipayd      u:object_r:hal_mlipay_default_exec:s0

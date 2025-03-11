@@ -2492,12 +2492,6 @@ vendor/lib64/libdolbyeglcore.so
 vendor/lib64/libdolbyencoderprocessor.so
 vendor/lib64/libdolbyottcameracontrol.so
 
-# MiCharge
-vendor/bin/hw/vendor.xiaomi.hardware.micharge-service
-vendor/etc/init/vendor.xiaomi.hardware.micharge-service.rc
-vendor/etc/vintf/manifest/vendor.xiaomi.hardware.micharge.xml
-vendor/lib64/vendor.xiaomi.hardware.micharge-V2-ndk.so
-
 # MMI
 vendor/bin/hw/vendor.qti.hardware.factory-service
 vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
