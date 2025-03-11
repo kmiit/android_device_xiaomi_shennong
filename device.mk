@@ -175,9 +175,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml
 
 # Health
-PRODUCT_PACKAGES += \
-    android.hardware.health-service.qti \
-    android.hardware.health-service.qti_recovery
+$(call inherit-product, vendor/qcom/opensource/healthd-ext/health-vendor-product.mk)
 
 # IPACM
 PRODUCT_PACKAGES += \
