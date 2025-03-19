@@ -78,6 +78,7 @@ PRODUCT_PACKAGES += \
     libagm_mixer_plugin \
     libbatterylistener \
     libfmpal \
+    libhfp_pal \
     libpalclient \
     libqcompostprocbundle \
     libqcomvisualizer \
