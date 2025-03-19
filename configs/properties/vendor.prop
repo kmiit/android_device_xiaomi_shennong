@@ -13,6 +13,7 @@ persist.vendor.audio.misoundasc=true
 persist.vendor.audio.spatializer.enable=false
 persist.vendor.audio.spf_restart=true
 ro.audio.flinger_standbytime_ms=2000
+ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.audio.btsamplerate.adaptive=true
 ro.vendor.audio.camera.loopback.support=true
 ro.vendor.audio.dualadc.support=true
