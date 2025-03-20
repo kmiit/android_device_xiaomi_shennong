@@ -2269,11 +2269,6 @@ vendor/firmware/gen71100_sqe.fw
 vendor/firmware/gmu_gen70900.bin
 vendor/firmware/qps615_fw.bin
 
-# Identity service
-vendor/etc/init/android.hardware.identity-service-qti.rc
-vendor/etc/vintf/manifest/manifest_identity_credential.xml
-vendor/lib64/libqtiidentitycredential.so
-
 # IR
 odm/lib64/hw/consumerir.qcom.so
 
