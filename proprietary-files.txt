@@ -2773,7 +2773,6 @@ vendor/etc/init/init.qti.qcv.rc
 # QESDK
 vendor/bin/qesdk-manager
 vendor/etc/init/qesdk-manager.rc
-vendor/etc/init/qesdk-secmanager.rc
 vendor/etc/seccomp_policy/qesdk.policy
 vendor/etc/seccomp_policy/qesdksec.policy
 vendor/etc/vintf/manifest/qesdk-manager.xml
