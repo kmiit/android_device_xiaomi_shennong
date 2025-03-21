@@ -14,9 +14,6 @@ vendor.xiaomi.hardware.display.mihwcextension.IMiHwcExtension/default u:object_r
 vendor.rongcard.eid.IEidDeviceAidl/default                          u:object_r:vendor_hal_eid_service:s0
 
 # Fingerprint
-com.fingerprints.extension3.IFingerprintNavigation/default              u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
-com.fingerprints.extension3.IFingerprintSensorTest/default              u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
-vendor.xiaomi.hardware.fingerprintextension.IXiaomiFingerprint/default  u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
 vendor.xiaomi.hardware.fx.tunnel.IMiFxTunnel/default                    u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
 
 # Mlipay

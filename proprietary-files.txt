@@ -2134,7 +2134,6 @@ odm/etc/vintf/manifest/AHBF-V3-service.xml
 odm/etc/vintf/manifest/fod-aidl.xml
 odm/lib64/hw/fingerprint.goodix_fod.so:odm/lib64/hw/fingerprint.goodix_fod.default.so;FIX_SONAME
 odm/lib64/libgf_hal.so
-vendor/lib64/com.fingerprints.extension3-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.fx.tunnel-V1-ndk.so
 
 # FM
