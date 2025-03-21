@@ -1,9 +1,0 @@
-type vendor_dtool, domain;
-type vendor_dtool_exec, exec_type, file_type, vendor_file_type;
-type vendor_hal_fingerprint_dtool1_service, service_manager_type;
-
-allow vendor_dtool servicemanager:binder { call transfer };
-
-add_service(vendor_dtool, vendor_hal_fingerprint_dtool1_service)
-
-init_daemon_domain(vendor_dtool)
