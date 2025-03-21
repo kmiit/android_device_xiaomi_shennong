@@ -1,0 +1,3 @@
+# Log Manager
+on post-fs-data
+    mkdir /data/vendor/bsplog 0775 system system

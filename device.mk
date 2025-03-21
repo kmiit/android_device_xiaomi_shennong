@@ -286,6 +286,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.logcat.rc \
     init.recovery.qcom.rc \
+    init.shennong.rc \
     init.target.rc
 
 PRODUCT_COPY_FILES += \
