@@ -7,7 +7,8 @@ vendor.xiaomi.hardware.aon.IAlwaysOn/miaonservicehal                u:object_r:h
 vendor.xiaomi.hardware.quickcamera.IQuickCameraService/default      u:object_r:hal_quickcamera_service:s0
 
 # Displayfeature
-vendor.xiaomi.hardware.displayfeature_aidl.IDisplayFeature/default  u:object_r:vendor_hal_displayfeature_xiaomi_service:s0
+vendor.xiaomi.hardware.displayfeature_aidl.IDisplayFeature/default    u:object_r:vendor_hal_displayfeature_xiaomi_service:s0
+vendor.xiaomi.hardware.display.mihwcextension.IMiHwcExtension/default u:object_r:vendor_hal_hwcextension_xiaomi_service:s0
 
 # EID
 vendor.rongcard.eid.IEidDeviceAidl/default                          u:object_r:vendor_hal_eid_service:s0
