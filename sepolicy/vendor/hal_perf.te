@@ -1,1 +1,3 @@
 allow vendor_hal_perf_default hal_audio_default:dir search;
+allow vendor_hal_perf_default sysfs_thermal:file write;
+allow vendor_hal_perf_default vendor_shsusrd:dir search;
