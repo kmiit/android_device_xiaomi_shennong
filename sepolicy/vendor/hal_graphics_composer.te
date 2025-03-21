@@ -5,6 +5,7 @@ allow hal_graphics_composer_default vendor_hal_displayfeature_xiaomi_service:ser
 allow hal_graphics_composer_default vendor_hal_displayfeature_xiaomi_default:binder call;
 allow hal_graphics_composer_default vendor_sysfs_displayfeature:file { open read write };
 
+add_service(hal_graphics_composer_default, vendor_hal_hwcextension_xiaomi_service)
 add_service(hal_graphics_composer_default, vendor_mistcdisplay_service)
 add_service(hal_graphics_composer_default, vendor_miclstc_service)
 
