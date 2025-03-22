@@ -130,7 +130,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/lib64/com.qti.feature2.generic.so',
         'odm/lib64/com.qti.feature2.gs.sm8650.so',
         'odm/lib64/hw/camera.qcom.sm8650.so',
-        'odm/lib64/hw/camera.qcom.so',
         'odm/lib64/hw/com.qti.chi.offline.so',
         'odm/lib64/hw/com.qti.chi.override.so',
         'odm/lib64/com.qti.feature2.hdr.so',
@@ -195,6 +194,14 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libdisplaydebug.so'
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.composer3-V2-ndk.so', 'android.hardware.graphics.composer3-V3-ndk.so'),
+    (
+        'odm/lib64/libcamxcommonutils.so',
+        'vendor/lib64/libcameraopt.so',
+    ): blob_fixup()
+        .add_needed('libprocessgroup_shim.so'),
+    'odm/lib64/hw/camera.qcom.so': blob_fixup()
+        .add_needed('libprocessgroup_shim.so')
+        .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
