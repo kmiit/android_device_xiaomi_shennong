@@ -249,8 +249,7 @@ DEVICE_MANIFEST_PINEAPPLE_FILES := \
     hardware/qcom-caf/sm8650/audio/primary-hal/configs/common/manifest_non_qmaa_extn.xml
 
 DEVICE_MATRIX_FILE := \
-    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml \
-    hardware/qcom-caf/common/compatibility_matrix.xml
+    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml \
