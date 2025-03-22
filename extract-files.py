@@ -202,6 +202,8 @@ blob_fixups: blob_fixups_user_type = {
     'odm/lib64/hw/camera.qcom.so': blob_fixup()
         .add_needed('libprocessgroup_shim.so')
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
+    'vendor/bin/pnscr-sst': blob_fixup()
+        .add_needed('libbase_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
