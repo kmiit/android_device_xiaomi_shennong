@@ -14,6 +14,9 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from shennong device.
 $(call inherit-product, device/xiaomi/shennong/device.mk)
 
+# Inherit Gapps if exists
+$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+
 ## Device identifier
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := shennong
