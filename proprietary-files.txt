@@ -206,7 +206,6 @@ vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 
 # AGM
 vendor/lib64/libagm.so
-vendor/lib64/libagmmixer.so
 vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
 
 # Audio

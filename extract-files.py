@@ -47,6 +47,7 @@ lib_fixups: lib_fixups_user_type = {
         'android.hardware.graphics.composer3-V2-ndk',
         'audio.primary.pineapple',
         'libagmclient',
+        'libagmmixer',
         'libpalclient',
     ): lib_fixup_remove,
 }
