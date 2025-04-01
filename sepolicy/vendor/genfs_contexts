@@ -7,9 +7,6 @@ genfscon sysfs "/devices/platform/soc/soc:xiaomi_fingerprint/actpower"      u:ob
 genfscon sysfs "/devices/virtual/touch/touch_dev/fod_press_status"          u:object_r:sysfs_tp_fodstatus:s0
 genfscon sysfs "/devices/virtual/touch/touch_dev/gesture_single_tap_state"  u:object_r:sysfs_tp_fodstatus:s0
 
-# Graphics
-genfscon sysfs /devices/platform/soc/88e0000.qcom,msm-eud/extcon/extcon2/cable.1/name u:object_r:vendor_sysfs_graphics:s0
-
 # Touchfeature
 genfscon proc "/tp_fw_version"            u:object_r:proc_tp_file:s0
 genfscon proc "/tp_lockdown_info"         u:object_r:proc_tp_lockdown:s0
