@@ -211,12 +211,6 @@ vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Audio (Config)
-odm/etc/audio/sku_pineapple/mixer_paths_overlay_static.xml
-odm/etc/audio/sku_pineapple/mixer_paths_overlay_dynamic.xml
-odm/etc/audio/sku_pineapple/mixer_paths_pineapple_mtp.xml
-odm/etc/audio/sku_pineapple/resourcemanager_pineapple_mtp.xml
-odm/etc/usecaseKvManager.xml
-vendor/etc/audio/sku_pineapple/adsp_sleep_monitor.conf
 vendor/etc/batching.conf
 vendor/etc/card-defs.xml
 vendor/etc/kvh2xml.xml
