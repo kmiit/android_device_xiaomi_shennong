@@ -1,0 +1,39 @@
+//
+// Copyright (C) 2025 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "device_odm_audio_sku_files",
+    relative_install_path: "audio/sku_pineapple",
+    srcs: [
+        "audio/sku_pineapple/adsp_sleep_monitor.conf",
+        "audio/sku_pineapple/mixer_paths_overlay_dynamic.xml",
+        "audio/sku_pineapple/mixer_paths_overlay_static.xml",
+        "audio/sku_pineapple/mixer_paths_pineapple_mtp.xml",
+        "audio/sku_pineapple/resourcemanager_pineapple_mtp.xml",
+    ],
+    device_specific: true
+}
+
+prebuilt_etc {
+    name: "device_vendor_audio_sku_files",
+    relative_install_path: "audio/sku_pineapple",
+    srcs: [
+        "audio/sku_pineapple/audio_effects.xml",
+        "audio/sku_pineapple/audio_policy_configuration.xml",
+    ],
+    vendor: true
+}
+
+prebuilt_etc {
+    name: "bluetooth_hearing_aid_audio_policy_configuration.xml",
+    src: "audio/bluetooth_hearing_aid_audio_policy_configuration.xml",
+    vendor: true
+}
+
+prebuilt_etc {
+    name: "usecaseKvManager.xml",
+    src: "audio/usecaseKvManager.xml",
+    device_specific: true,
+}
