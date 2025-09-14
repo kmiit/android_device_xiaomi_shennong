@@ -284,8 +284,9 @@ PRODUCT_PACKAGES += \
     vendor.qti.qspa-service
 
 # RIL modem_firmware symlink
+$(call soong_config_set,rfs,mpss_firmware_symlink_target,modem_firmware)
+
 PRODUCT_PACKAGES += \
-    rfs_msm_mpss_readonly_modem_firmware_symlink \
     rfs_msm_mpss_readonly_mbnconfig_symlink
 
 # Rootdir
