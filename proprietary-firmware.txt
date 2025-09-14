@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from shennong OS2.0.101.0.VNBCNXM
+## are from Xiaomi 14 Pro (OS2.0.217.0.VNBCNXM).
 
 abl.img;AB
 aop.img;AB
