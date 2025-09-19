@@ -3269,7 +3269,6 @@ vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 
 # Uevent
 odm/etc/ueventd.rc;MODULE=ueventd-odm.rc
-vendor/etc/ueventd.rc
 
 # Vibrator
 odm/firmware/0x14da8G0x025c4G0x0a6a8G0x00188G0x0f400G0x0d520G0x05accG

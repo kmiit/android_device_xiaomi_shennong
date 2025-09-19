@@ -296,7 +296,8 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.recovery.qcom.rc \
     init.shennong.rc \
-    init.target.rc
+    init.target.rc \
+    ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom

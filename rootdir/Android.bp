@@ -43,3 +43,10 @@ prebuilt_etc_xml {
     sub_dir: "appcompat",
     product_specific: true,
 }
+
+prebuilt_etc {
+    name: "ueventd.qcom.rc",
+    filename: "ueventd.rc",
+    src: "etc/ueventd.rc",
+    vendor: true,
+}
