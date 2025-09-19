@@ -313,7 +313,8 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
-    sensors.dynamic_sensor_hal
+    sensors.dynamic_sensor_hal \
+    sensors.xiaomi.v2
 
 PRODUCT_PACKAGES += \
     android.hardware.sensor.accelerometer.prebuilt.xml \

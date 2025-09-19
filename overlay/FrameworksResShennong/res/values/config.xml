@@ -235,4 +235,7 @@
           that can be set by the user. -->
      <integer name="config_screenBrightnessDim">5</integer>
      <item format="float" name="config_screenBrightnessDimFloat" type="dimen">0.000854597</item>
+
+    <!-- Whether to enable fp unlock when screen turns off on udfps devices -->
+    <bool name="config_screen_off_udfps_enabled">true</bool>
 </resources>

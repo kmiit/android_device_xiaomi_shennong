@@ -170,6 +170,9 @@ ro.telephony.default_network=33,33
 # RCS
 persist.vendor.rcs.singlereg.feature=1
 
+# Sensor
+ro.vendor.sensors.xiaomi.udfps=true
+
 # Update engine
 ro.virtual_ab.compression.threads=true
 

@@ -1,0 +1,1 @@
+allow hal_sensors_default sysfs_touch_hostprocess:file { open read };
