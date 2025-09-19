@@ -61,6 +61,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('libcodec2_shim.so'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
+        .add_needed('libbinder_shim.so')
         .add_needed('libhidlbase_shim.so'),
     (
         'odm/lib64/camera/com.qti.actuator.shennong_ofilm_s5kjn1_dw9800v_ultra_actuator.so',
@@ -203,6 +204,16 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy': blob_fixup()
         .add_line_if_missing('sched_get_priority_min: 1')
         .add_line_if_missing('sched_get_priority_max: 1'),
+    (
+        'vendor/bin/qcc-vendor',
+        'vendor/bin/qms',
+        'vendor/bin/xtra-daemon',
+        'vendor/lib64/libcne.so',
+        'vendor/lib64/libqcc_sdk.so',
+        'vendor/lib64/libqms_xiaomi.so',
+        'vendor/lib64/libqms_client.so', 
+    ): blob_fixup()
+        .add_needed('libbinder_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
