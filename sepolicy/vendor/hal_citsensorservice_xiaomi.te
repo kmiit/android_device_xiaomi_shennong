@@ -1,4 +1,4 @@
-type vendor_hal_citsensorservice_xiaomi_default, domain, hal_graphics_composer;
+type vendor_hal_citsensorservice_xiaomi_default, domain;
 type vendor_hal_citsensorservice_xiaomi_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_citsensorservice_xiaomi_service, hal_service_type, protected_service, service_manager_type;
 
@@ -7,7 +7,6 @@ allow vendor_hal_citsensorservice_xiaomi_default hal_graphics_mapper_hwservice:h
 allow vendor_hal_citsensorservice_xiaomi_default mnt_vendor_file:dir search;
 allow vendor_hal_citsensorservice_xiaomi_default self:capability sys_nice;
 allow vendor_hal_citsensorservice_xiaomi_default self:qipcrtr_socket { create getattr read setopt write };
-# The rule in next line meets neverallow in test build, workarounded
 allow vendor_hal_citsensorservice_xiaomi_default vendor_hal_vnddisplayconfig_service:service_manager find;
 allow vendor_hal_citsensorservice_xiaomi_default vendor_displayfeature_device:chr_file { ioctl open read };
 allow vendor_hal_citsensorservice_xiaomi_default vendor_persist_sensors_file:dir search;
@@ -17,6 +16,7 @@ allow vendor_hal_citsensorservice_xiaomi_default vndbinder_device:chr_file { rea
 add_service(vendor_hal_citsensorservice_xiaomi_server, vendor_hal_citsensorservice_xiaomi_service)
 
 hal_client_domain(vendor_hal_citsensorservice_xiaomi_default, hal_graphics_allocator)
+hal_client_domain(vendor_hal_citsensorservice_xiaomi_default, hal_graphics_composer)
 hal_server_domain(vendor_hal_citsensorservice_xiaomi_default, vendor_hal_citsensorservice_xiaomi)
 
 binder_call(vendor_hal_citsensorservice_xiaomi_default, hal_graphics_composer)
