@@ -73,18 +73,17 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     audioadsprpcd \
-    libagmclient \
     libagm_compress_plugin \
     libagm_pcm_plugin \
     libagm_mixer_plugin \
     libbatterylistener \
+    libcustomva_intf \
     libfmpal \
     libhfp_pal \
-    libpalclient \
+    libhotword_intf \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libsndcardparser \
     libvolumelistener
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm8650/audio/primary-hal
@@ -112,6 +111,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
 
 # Bluetooth
+PRODUCT_PACKAGES += \
+    lib_bt_aptx \
+    lib_bt_ble \
+    lib_bt_bundle
+
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.prebuilt.xml \
     android.hardware.bluetooth_le.prebuilt.xml

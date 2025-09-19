@@ -2,8 +2,8 @@
 ## are from Xiaomi 14 Pro (OS2.0.217.0.VNBCNXM).
 
 # ACDB
-odm/etc/acdbdata/Forte/Forte_acdb_cal.acdb:odm/etc/acdbdata/pineapple_mtp/Forte_acdb_cal.acdb
-odm/etc/acdbdata/Forte/Forte_workspaceFileXml.qwsp:odm/etc/acdbdata/pineapple_mtp/Forte_workspaceFileXml.qwsp
+odm/etc/acdbdata/Forte/Forte_acdb_cal.acdb:vendor/etc/acdbdata/pineapple_mtp/Forte_acdb_cal.acdb
+odm/etc/acdbdata/Forte/Forte_workspaceFileXml.qwsp:vendor/etc/acdbdata/pineapple_mtp/Forte_workspaceFileXml.qwsp
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_acdb_cal.acdb
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_workspaceFileXml.qwsp
 vendor/etc/acdbdata/ffv_models/ffv__5.0.1_0.1__3.0.0_0.0__eai_2.10_enpu3.pmd
@@ -152,44 +152,20 @@ vendor/lib64/rfs/dsp/libworker_pool.so
 # ANT+
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 
-# AGM
-vendor/lib64/libagm.so
-vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
-
 # Audio
 odm/etc/audio/silent-3sec.wav
-odm/lib64/libaudioroute_ext.so
-odm/lib64/libcrussp.so;DISABLE_CHECKELF
-odm/lib64/libvoipspacespeech.so
 vendor/etc/audio_cloud_control_white_list.xml
 vendor/etc/mem_logger_config.xml
 vendor/etc/models/acd/environment.eai
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
-vendor/lib64/hw/audio.primary.pineapple.so
-vendor/lib64/hw/gyro_fusion_interface.so
 vendor/lib64/libVoiceSdk.so
-vendor/lib64/lib_misound_asc.so
-vendor/lib64/libadm.so
-vendor/lib64/libar-acdb.so
-vendor/lib64/libarmemlog.so
-vendor/lib64/libar-gpr.so
-vendor/lib64/libar-gsl.so
-vendor/lib64/libar-pal.so;DISABLE_CHECKELF
-vendor/lib64/libats.so
-vendor/lib64/libaudio_log_utils.so
-vendor/lib64/libaudiocloudctrl.so
 vendor/lib64/libcapiv2svacnnvendor.so
 vendor/lib64/libcapiv2svarnnvendor.so
 vendor/lib64/libcapiv2udk7vendor.so
 vendor/lib64/libcapiv2uvvendor.so
-vendor/lib64/libcustomva_intf.so
 vendor/lib64/libdlbpreg.so
-vendor/lib64/libkaraokepal.so;DISABLE_CHECKELF
-vendor/lib64/liblx-ar_util.so
-vendor/lib64/liblx-osal.so
-vendor/lib64/libmcs.so
 vendor/lib64/libmis6.so
 vendor/lib64/libmisight.so
 vendor/lib64/libmisfpsop.so
@@ -200,14 +176,10 @@ vendor/lib64/libmisoundsa_fx.so
 vendor/lib64/libmispowerop.so
 vendor/lib64/libmisr.so
 vendor/lib64/libpal_net_if.so
-vendor/lib64/libqtigefar.so
 vendor/lib64/libresampler.so
 vendor/lib64/libswspatializer_ext.so
 vendor/lib64/libtensorflowlite_c.so
-vendor/lib64/libultrasound_notify.so
 vendor/lib64/libxlog.so
-vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
-vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Audio (Config)
 vendor/etc/batching.conf
@@ -274,9 +246,6 @@ vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bttpi-impl.so
 vendor/lib64/btaudio_offload_if.so
-vendor/lib64/lib_bt_aptx.so
-vendor/lib64/lib_bt_ble.so
-vendor/lib64/lib_bt_bundle.so
 vendor/lib64/lib_bt_lhdc.so
 vendor/lib64/libbluetooth_audio_session_aidl_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so

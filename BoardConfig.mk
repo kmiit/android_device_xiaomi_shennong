@@ -6,7 +6,6 @@
 
 DEVICE_PATH := device/xiaomi/shennong
 KERNEL_PATH := $(DEVICE_PATH)-kernel
-TARGET_PROVIDES_AUDIO_HAL ?= true
 
 # A/B
 AB_OTA_PARTITIONS += \
