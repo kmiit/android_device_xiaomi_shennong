@@ -186,10 +186,11 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
     (
         'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
-        # 'vendor/bin/hw/vendor.qti.hardware.display.composer-service',
         'vendor/lib64/libdisplaydebug.so'
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.composer3-V2-ndk.so', 'android.hardware.graphics.composer3-V3-ndk.so'),
+    'vendor/bin/hw/vendor.qti.hardware.display.composer-service': blob_fixup()
+        .replace_needed('vendor.qti.hardware.display.composer3-V1-ndk.so', 'vendor.qti.hardware.display.composer3-V3-ndk.so'),
     (
         'odm/lib64/libcamxcommonutils.so',
         'vendor/lib64/libcameraopt.so',
