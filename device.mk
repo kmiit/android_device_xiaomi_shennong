@@ -96,15 +96,8 @@ PRODUCT_PACKAGES += \
     usb_audio_policy_configuration.xml
 
 PRODUCT_PACKAGES += \
-    bluetooth_hearing_aid_audio_policy_configuration.xml \
-    device_vendor_audio_sku_files \
-    device_odm_audio_sku_files \
-    usecaseKvManager.xml
-
-PRODUCT_COPY_FILES += \
-    $(AUDIO_HAL_DIR)/configs/common/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    $(AUDIO_HAL_DIR)/configs/pineapple/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_pineapple/audio_effects.conf \
-    $(AUDIO_HAL_DIR)/configs/pineapple/microphone_characteristics.xml:$(TARGET_COPY_OUT_VENDOR)/etc/microphone_characteristics.xml
+    device_vendor_audio_config \
+    device_vendor_sku_audio_config
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \

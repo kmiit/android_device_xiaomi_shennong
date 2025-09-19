@@ -4,36 +4,26 @@
 //
 
 prebuilt_etc {
-    name: "device_odm_audio_sku_files",
+    name: "device_vendor_sku_audio_config",
     relative_install_path: "audio/sku_pineapple",
     srcs: [
         "audio/sku_pineapple/adsp_sleep_monitor.conf",
-        "audio/sku_pineapple/mixer_paths_overlay_dynamic.xml",
-        "audio/sku_pineapple/mixer_paths_overlay_static.xml",
+        "audio/sku_pineapple/audio_effects.conf",
+        "audio/sku_pineapple/audio_effects.xml",
+        "audio/sku_pineapple/audio_policy_configuration.xml",
         "audio/sku_pineapple/mixer_paths_pineapple_mtp.xml",
         "audio/sku_pineapple/resourcemanager_pineapple_mtp.xml",
     ],
-    device_specific: true
+    vendor: true,
 }
 
 prebuilt_etc {
-    name: "device_vendor_audio_sku_files",
-    relative_install_path: "audio/sku_pineapple",
+    name: "device_vendor_audio_config",
     srcs: [
-        "audio/sku_pineapple/audio_effects.xml",
-        "audio/sku_pineapple/audio_policy_configuration.xml",
+        "audio/audio_policy_configuration.xml",
+        "audio/bluetooth_qti_hearing_aid_audio_policy_configuration.xml",
+        "audio/microphone_characteristics.xml",
+        "audio/usecaseKvManager.xml",
     ],
-    vendor: true
-}
-
-prebuilt_etc {
-    name: "bluetooth_hearing_aid_audio_policy_configuration.xml",
-    src: "audio/bluetooth_hearing_aid_audio_policy_configuration.xml",
-    vendor: true
-}
-
-prebuilt_etc {
-    name: "usecaseKvManager.xml",
-    src: "audio/usecaseKvManager.xml",
-    device_specific: true,
+    vendor: true,
 }
