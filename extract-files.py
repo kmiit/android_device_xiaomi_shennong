@@ -176,7 +176,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/lib64/libcommonchiutils.so',
         'odm/lib64/libipebpsstriping480.so',
         'odm/lib64/libisphwsetting.so',
-        'odm/lib64/libjpege.so',
         'odm/lib64/libmmcamera_pdpc.so',
         'odm/lib64/libopestriping.so',
         'odm/lib64/libtfestriping.so',
