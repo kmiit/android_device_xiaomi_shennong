@@ -69,7 +69,6 @@ BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config/config.fs
 
 # Init
-TARGET_RECOVERY_DEVICE_MODULES := libinit_shennong
 $(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_shennong)
 
 # Kernel
