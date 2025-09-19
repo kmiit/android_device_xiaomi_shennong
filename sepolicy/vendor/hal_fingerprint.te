@@ -25,3 +25,4 @@ set_prop(hal_fingerprint_default, vendor_fp_info_prop)
 add_service(hal_fingerprint_default, vendor_hal_fingerprint_service_xiaomi)
 
 binder_call(hal_fingerprint_default, vendor_hal_perf_default)
+binder_call(hal_fingerprint_default, system_app)

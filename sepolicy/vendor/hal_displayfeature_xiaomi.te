@@ -2,6 +2,10 @@ attribute vendor_hal_displayfeature_xiaomi;
 attribute vendor_hal_displayfeature_xiaomi_client;
 attribute vendor_hal_displayfeature_xiaomi_server;
 
+type vendor_hal_displayfeature_xiaomi_default, domain;
+type vendor_hal_displayfeature_xiaomi_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_displayfeature_xiaomi_service, protected_service, service_manager_type;
+
 allow vendor_hal_displayfeature_xiaomi_default fwk_sensor_hwservice:hwservice_manager find;
 allow vendor_hal_displayfeature_xiaomi_default graphics_device:chr_file rw_file_perms;
 allow vendor_hal_displayfeature_xiaomi_default hal_graphics_composer_default:binder call;
@@ -29,6 +33,7 @@ binder_call(vendor_hal_displayfeature_xiaomi_default, vndservicemanager)
 
 get_prop(vendor_hal_displayfeature_xiaomi_default, hwservicemanager_prop)
 get_prop(vendor_hal_displayfeature_xiaomi_default, vendor_display_prop)
+set_prop(vendor_hal_displayfeature_xiaomi_default, vendor_displayfeature_prop)
 
 init_daemon_domain(vendor_hal_displayfeature_xiaomi_default)
 

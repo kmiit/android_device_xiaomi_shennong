@@ -5,6 +5,7 @@ attribute hal_mlipay_server;
 type hal_mlipay_default, domain;
 type hal_mlipay_default_exec, exec_type, file_type, vendor_file_type;
 type hal_mlipay_service, service_manager_type;
+
 allow hal_mlipay_default miev_device:chr_file write;
 allow hal_mlipay_default tee_device:chr_file rw_file_perms;
 allow hal_mlipay_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl open read };

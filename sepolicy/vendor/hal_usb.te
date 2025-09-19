@@ -1,2 +1,2 @@
-allow vendor_hal_usb_qti vendor_sysfs_qcom_battery:dir search;
-allow vendor_hal_usb_qti vendor_sysfs_qcom_battery:file r_file_perms;
+allow vendor_hal_usb_qti vendor_sysfs_battery_supply:dir search;
+allow vendor_hal_usb_qti vendor_sysfs_battery_supply:file r_file_perms;

@@ -4,6 +4,9 @@ persist.vendor.EnableP3ColorSpace               u:object_r:vendor_camera_p3enabl
 vendor.camera.sensor.                           u:object_r:vendor_camera_sensor_prop:s0
 vendor.camera.sensor.logsystem                  u:object_r:vendor_camera_prop:s0
 
+# Displayfeature
+persist.vendor.max.brightness                   u:object_r:vendor_displayfeature_prop:s0
+
 # Fingerprint
 persist.vendor.sys.fp.                          u:object_r:vendor_fp_prop:s0
 ro.hardware.fp.                                 u:object_r:vendor_fp_prop:s0

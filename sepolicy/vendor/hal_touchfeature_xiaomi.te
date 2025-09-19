@@ -1,3 +1,11 @@
+attribute hal_touchfeature_xiaomi;
+attribute hal_touchfeature_xiaomi_client;
+attribute hal_touchfeature_xiaomi_server;
+
+type hal_touchfeature_xiaomi_default, domain;
+type hal_touchfeature_xiaomi_default_exec, exec_type, file_type, vendor_file_type;
+type hal_touchfeature_xiaomi_service, hal_service_type, protected_service, service_manager_type;
+
 allow hal_touchfeature_xiaomi_default vendor_touchfeature_prop:file { getattr open read };
 allow hal_touchfeature_xiaomi_default proc_tp_file:file { open read write };
 allow hal_touchfeature_xiaomi_default self:capability sys_nice;

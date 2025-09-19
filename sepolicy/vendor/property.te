@@ -5,6 +5,9 @@ vendor_public_prop(vendor_camera_p3enable_prop)
 # Display
 vendor_public_prop(vendor_usedframebuffer_prop)
 
+# Displayfeature
+vendor_public_prop(vendor_displayfeature_prop)
+
 # Fingerprint
 vendor_public_prop(vendor_fp_prop)
 vendor_restricted_prop(vendor_fp_info_prop)
