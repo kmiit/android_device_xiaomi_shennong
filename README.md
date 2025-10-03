@@ -1,10 +1,9 @@
 # Device tree for Xiaomi 14 Pro
 
 > [!WARNING]
-> **NOT** WORKING
-> - Screen-off udfps (can only work with AOD)
+> **BUGS**
 > - OTG doesn't have power supply 
-> - Reverse charging
+> - Camera and torch totally died
 > 
 > Maybe more
 
