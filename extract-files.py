@@ -53,9 +53,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/etc/camera/motiontuning.xml'
     ): blob_fixup()
         .regex_replace('xml=version', 'xml version'),
-    'vendor/etc/sensors/hals.conf': blob_fixup()
-        .regex_replace('sensors.ultrasoundproximity.so', '')
-        .regex_replace('vl53l8.hal@2.0.so', ''),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('libcodec2_shim.so'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()

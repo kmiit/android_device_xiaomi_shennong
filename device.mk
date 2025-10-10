@@ -300,6 +300,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
     fstab.qcom \
+    hals.conf \
     init.recovery.qcom.rc \
     init.shennong.rc \
     init.target.rc \

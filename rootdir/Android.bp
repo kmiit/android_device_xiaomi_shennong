@@ -50,3 +50,10 @@ prebuilt_etc {
     src: "etc/ueventd.rc",
     vendor: true,
 }
+
+prebuilt_etc {
+    name: "hals.conf",
+    src: "etc/sensors/hals.conf",
+    sub_dir: "sensors",
+    vendor: true,
+}
