@@ -23,6 +23,7 @@ import vendor.xiaomi.hw.touchfeature.ITouchFeature;
 
 import com.xiaomi.settings.display.ColorModeService;
 import com.xiaomi.settings.edgesuppression.EdgeSuppressionService;
+import com.xiaomi.settings.udfpsUtils.ScreenOffFingerprintService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
@@ -63,6 +64,10 @@ public class BootCompletedReceiver extends BroadcastReceiver {
                 UserHandle.CURRENT);
 
         updateTapToWakeStatus(context);
+
+        // Screen Off Fingerprint
+        context.startServiceAsUser(new Intent(context, ScreenOffFingerprintService.class),
+                UserHandle.CURRENT);
     }
 
     private void updateTapToWakeStatus(Context context) {
