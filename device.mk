@@ -241,6 +241,9 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    nqnfcinfo
+
+PRODUCT_PACKAGES += \
     android.hardware.nfc.hce.prebuilt.xml \
     android.hardware.nfc.prebuilt.xml \
     android.hardware.se.omapi.ese.prebuilt.xml \

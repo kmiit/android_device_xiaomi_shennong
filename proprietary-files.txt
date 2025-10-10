@@ -2395,7 +2395,6 @@ odm/etc/libnfc-nxp.conf
 odm/bin/hw/android.hardware.nqnfc-service.nxp
 odm/etc/init/nfc-service-nxp.rc
 odm/lib64/nfc_nci.nqx.default.hw.so
-vendor/bin/nqnfcinfo
 vendor/bin/pnscr
 vendor/bin/pnscr-mi
 vendor/bin/pnscr-rf
