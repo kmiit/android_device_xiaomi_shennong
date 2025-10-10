@@ -20,6 +20,7 @@
 
 #include <aidl/android/hardware/biometrics/common/SensorStrength.h>
 #include <aidl/android/hardware/biometrics/fingerprint/ISessionCallback.h>
+#include <android-base/unique_fd.h>
 #include <android/binder_to_string.h>
 #include <string>
 
@@ -33,6 +34,9 @@
 
 #include <fstream>
 #include "fingerprint-xiaomi.h"
+#include <display/drm/mi_disp.h>
+
+#define DISP_FEATURE_PATH "/dev/mi_display/disp_feature"
 
 using namespace ::aidl::android::hardware::biometrics::common;
 
@@ -77,12 +81,19 @@ class FingerprintEngine {
 
     fingerprint_device_t* openFingerprintHal();
 
-    template <typename T>
-    void set(const std::string &path, const T &value);
     void setFodStatus(int value);
 
     fingerprint_device_t* mDevice;
     void setFingerStatus(bool pressed);
+
+    ::android::base::unique_fd disp_fd_;
+    disp_local_hbm_req req = {
+        .base = {
+          .flag = 0,
+          .disp_id = MI_DISP_PRIMARY,
+        },
+        .local_hbm_value = LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP,
+    };
 
   protected:
     // lockout timer

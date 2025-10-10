@@ -5,6 +5,7 @@ allow hal_fingerprint_default property_socket:sock_file write;
 allow hal_fingerprint_default self:netlink_socket { bind create read write };
 allow hal_fingerprint_default sysfs_touch_hostprocess:file { getattr open read write };
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_default vendor_displayfeature_device:chr_file { ioctl open read write };
 allow hal_fingerprint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl open read };
 allow hal_fingerprint_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl open read };
 allow hal_fingerprint_default vendor_fingerprint_data_file:dir create_dir_perms;

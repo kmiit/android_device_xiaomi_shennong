@@ -9,6 +9,7 @@ cc_binary {
     init_rc: ["android.hardware.biometrics.fingerprint-service.shennong.rc"],
     vintf_fragments: ["android.hardware.biometrics.fingerprint-service.shennong.xml"],
     header_libs: [
+        "generated_kernel_headers",
         "shennong_fingerprint_headers",
     ],
     srcs: [

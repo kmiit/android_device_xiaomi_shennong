@@ -43,6 +43,8 @@ FingerprintEngine::FingerprintEngine()
         } else {
             LOG(INFO) << "Opened fingerprint HAL module";
         }
+
+        disp_fd_ = ::android::base::unique_fd(open(DISP_FEATURE_PATH, O_RDWR));
     }
 }
 
@@ -122,15 +124,9 @@ void FingerprintEngine::setFingerStatus(bool pressed) {
     mDevice->goodixExtCmd(mDevice, COMMAND_FOD_PRESS_STATUS, pressed ? PARAM_FOD_PRESSED : PARAM_FOD_RELEASED);
     mDevice->goodixExtCmd(mDevice, COMMAND_NIT, pressed ? PARAM_NIT_FOD : PARAM_NIT_NONE);
 
-    set(DISP_PARAM_PATH,
-        std::string(DISP_PARAM_LOCAL_HBM_MODE) + " " +
-                (pressed ? DISP_PARAM_LOCAL_HBM_ON : DISP_PARAM_LOCAL_HBM_OFF));
-}
-
-template <typename T>
-void FingerprintEngine::set(const std::string &path, const T &value){
-    std::ofstream file(path);
-    file << value;
+    req.local_hbm_value = pressed ? LHBM_TARGET_BRIGHTNESS_WHITE_1000NIT
+                                          : LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP;
+    ioctl(disp_fd_.get(), MI_DISP_IOCTL_SET_LOCAL_HBM, &req);
 }
 
 void FingerprintEngine::generateChallengeImpl(ISessionCallback* /*cb*/) {

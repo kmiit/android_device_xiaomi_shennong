@@ -23,11 +23,6 @@
 #define FOD_STATUS_OFF 0
 #define FOD_STATUS_ON 1
 
-#define DISP_PARAM_PATH "/sys/devices/virtual/mi_display/disp_feature/disp-DSI-0/disp_param"
-#define DISP_PARAM_LOCAL_HBM_MODE "9"
-#define DISP_PARAM_LOCAL_HBM_OFF "0"
-#define DISP_PARAM_LOCAL_HBM_ON "1"
-
 #define FINGERPRINT_ACQUIRED_VENDOR 7
 
 #define FINGERPRINT_MODULE_API_VERSION_2_1 HARDWARE_MODULE_API_VERSION(2, 1)
