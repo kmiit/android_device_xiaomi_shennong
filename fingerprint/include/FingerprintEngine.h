@@ -81,8 +81,6 @@ class FingerprintEngine {
 
     fingerprint_device_t* openFingerprintHal();
 
-    void setFodStatus(int value);
-
     fingerprint_device_t* mDevice;
     void setFingerStatus(bool pressed);
 

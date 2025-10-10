@@ -102,21 +102,15 @@ void FingerprintEngine::onAcquired(int32_t result, int32_t vendorCode) {
     LOG(INFO) << " result: " << result << " vendorCode: " << vendorCode;
     if (result != FINGERPRINT_ACQUIRED_VENDOR) {
         setFingerStatus(false);
-        if (result == FINGERPRINT_ACQUIRED_GOOD) setFodStatus(FOD_STATUS_OFF);
     } else if (vendorCode == 20 || vendorCode == 22) {
         /*
          * vendorCode = 20 waiting for fingerprint authentication
          * vendorCode = 22 waiting for fingerprint enroll
          */
-        setFodStatus(FOD_STATUS_ON);
     } else if (vendorCode == 44) {
         /* vendorCode = 44 fingerprint scan failed */
         setFingerStatus(false);
     }
-}
-
-void FingerprintEngine::setFodStatus(int value) {
-    set(FOD_STATUS_PATH, value);
 }
 
 void FingerprintEngine::setFingerStatus(bool pressed) {

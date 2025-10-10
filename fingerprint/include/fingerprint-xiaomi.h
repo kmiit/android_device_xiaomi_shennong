@@ -19,10 +19,6 @@
 #define PARAM_FOD_PRESSED 1
 #define PARAM_FOD_RELEASED 0
 
-#define FOD_STATUS_PATH "/sys/class/touch/touch_dev/fod_press_status"
-#define FOD_STATUS_OFF 0
-#define FOD_STATUS_ON 1
-
 #define FINGERPRINT_ACQUIRED_VENDOR 7
 
 #define FINGERPRINT_MODULE_API_VERSION_2_1 HARDWARE_MODULE_API_VERSION(2, 1)
