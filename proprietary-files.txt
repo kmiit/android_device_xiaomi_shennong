@@ -1472,9 +1472,7 @@ vendor/lib64/vendor.xiaomi.hardware.aon-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.quickcamera-V1-ndk.so
 
 # Camera Provider External
-vendor/bin/hw/android.hardware.camera.provider-V1-external-service
 vendor/etc/external_camera_config.xml
-vendor/etc/init/android.hardware.camera.provider-V1-external-service.rc
 vendor/etc/vintf/manifest/android.hardware.camera.provider.external.xml
 
 # Camera Firmware
