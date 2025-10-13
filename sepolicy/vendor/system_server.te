@@ -4,9 +4,6 @@ binder_call(system_server, vendor_hal_displayfeature_xiaomi_default);
 # Dolby
 hal_client_domain(system_server, hal_dms)
 
-# Sensors
-allow system_server vendor_hal_citsensorservice_xiaomi_default:binder { call transfer };
-
 # Sysfs
 dontaudit system_server sysfs:file read;
 
