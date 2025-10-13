@@ -1889,32 +1889,23 @@ vendor/lib64/libhdr_backlight_adapter.so
 vendor/lib64/libhdr_tm.so
 
 # Display HWC
-vendor/bin/hw/vendor.qti.hardware.display.composer-service;DISABLE_CHECKELF
 vendor/bin/qdcmss
 vendor/bin/ubwcconvert
 vendor/etc/init/qdcmss.rc
 vendor/etc/snapdragon_color_libs_config.xml
 vendor/lib64/libbacklight-calib.so
 vendor/lib64/libdigital-dimming.so
-vendor/lib64/libdfintf.so
-vendor/lib64/libdpps.so
-vendor/lib64/libfeutils.so
-vendor/lib64/libgame_enhance.so
+vendor/lib64/libmemutils.so
 vendor/lib64/libqdcm-algo.so
 vendor/lib64/libqdcm-json-mode-parser.so
 vendor/lib64/libqdcm-mode-parser.so
-vendor/lib64/libsdmcore.so
-vendor/lib64/libsdmdal.so
-vendor/lib64/libsdmutils.so
 vendor/lib64/libsnapdragoncolor-manager.so
 vendor/lib64/libsnapdragoncolor-qdcm.so
-vendor/lib64/vendor.xiaomi.hardware.display.mihwcextension-V1-ndk.so
 
 # Display postprocessing
 vendor/bin/hw/vendor.qti.hardware.display.color-service
 vendor/bin/ppd
 vendor/etc/init/vendor.qti.hardware.display.color-service.rc
-vendor/lib64/libdisp-aba.so
 
 # Display SDM
 vendor/etc/display/DPU1010.xml
@@ -1928,14 +1919,11 @@ vendor/etc/clstc_config_library.xml
 vendor/lib64/libclstc_algorithm_adapter.so
 vendor/lib64/libclstc_gcp_adapter.so
 vendor/lib64/libclstc_tm.so
-vendor/lib64/libdisplaydebug.so
 vendor/lib64/libdisplayqos.so
 vendor/lib64/libdisplayskuutils.so
 vendor/lib64/libintervmipc.so
-vendor/lib64/libmemutils.so
 vendor/lib64/libqseed3.so
 vendor/lib64/librcmask.so
-vendor/lib64/libsdedrm.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-colormgr-algo.so
 vendor/lib64/libsdm-disp-vndapis.so

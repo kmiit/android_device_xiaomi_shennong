@@ -14,7 +14,6 @@ from extract_utils.fixups_blob import (
     blob_fixups_user_type,
 )
 from extract_utils.fixups_lib import (
-    lib_fixup_remove,
     lib_fixups,
     lib_fixups_user_type,
     lib_fixup_vendorcompat,
@@ -41,9 +40,6 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.imsrtpservice@3.1',
         'vendor.qti.ImsRtpService-V1-ndk'
     ): lib_fixup_vendorcompat,
-    (
-        'android.hardware.graphics.composer3-V2-ndk',
-    ): lib_fixup_remove,
 }
 
 blob_fixups: blob_fixups_user_type = {
@@ -181,10 +177,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
     'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl': blob_fixup()
         .replace_needed('android.hardware.graphics.composer3-V2-ndk.so', 'android.hardware.graphics.composer3-V4-ndk.so'),
-    'vendor/lib64/libdisplaydebug.so': blob_fixup()
-        .replace_needed('android.hardware.graphics.composer3-V2-ndk.so', 'android.hardware.graphics.composer3-V3-ndk.so'),
-    'vendor/bin/hw/vendor.qti.hardware.display.composer-service': blob_fixup()
-        .replace_needed('vendor.qti.hardware.display.composer3-V1-ndk.so', 'vendor.qti.hardware.display.composer3-V3-ndk.so'),
     (
         'odm/lib64/libcamxcommonutils.so',
         'vendor/lib64/libcameraopt.so',

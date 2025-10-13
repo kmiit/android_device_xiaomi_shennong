@@ -16,7 +16,7 @@ persist.vendor.dc_backlight.enable=false
 debug.sf.set_idle_timer_ms=110
 
 # Display
-persist.sys.miui_resolution=1080,2400,420
+persist.sys.miui_resolution=1440x3200
 
 # Marketname
 ro.product.marketname=Xiaomi 14 Pro
