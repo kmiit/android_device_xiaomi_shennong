@@ -130,10 +130,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.full.prebuilt.xml \
     android.hardware.camera.raw.prebuilt.xml
 
-# ContextHub
-PRODUCT_PACKAGES += \
-    com.android.hardware.contexthub
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey

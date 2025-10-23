@@ -1678,10 +1678,6 @@ vendor/bin/ssgtzd
 vendor/etc/init/ssgtzd.rc
 vendor/etc/ssg/tz_whitelist.json
 
-# Context Hub
-vendor/bin/hw/android.hardware.contexthub-service.qmi
-vendor/etc/chre/preloaded_nanoapps.json
-
 # Data
 vendor/bin/ATFWD-daemon
 vendor/bin/adpl
