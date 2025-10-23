@@ -410,12 +410,9 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     hostapd_cli \
-    libwifi-hal-qcom \
     wpa_cli \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    libpasn \
-    libwifi-hal
+    wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
     android.hardware.wifi.direct.prebuilt.xml \
