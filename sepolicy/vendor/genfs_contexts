@@ -4,8 +4,11 @@ genfscon sysfs "/class/qcom-battery" u:object_r:vendor_sysfs_battery_supply:s0
 # Fingerprint
 genfscon sysfs "/devices/platform/soc/soc:xiaomi_fingerprint/fingerdown"    u:object_r:vendor_sysfs_displayfeature:s0
 genfscon sysfs "/devices/platform/soc/soc:xiaomi_fingerprint/actpower"      u:object_r:sysfs_wakeup:s0
-genfscon sysfs "/devices/virtual/touch/touch_dev/fod_press_status"          u:object_r:sysfs_tp_fodstatus:s0
 genfscon sysfs "/devices/virtual/touch/touch_dev/gesture_single_tap_state"  u:object_r:sysfs_tp_fodstatus:s0
+
+# Sensors
+genfscon sysfs /devices/virtual/touch/touch_dev/fod_longpress_gesture_enabled u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/touch/touch_dev/fod_press_status              u:object_r:vendor_sysfs_sensors:s0
 
 # Touchfeature
 genfscon proc "/tp_fw_version"            u:object_r:proc_tp_file:s0
