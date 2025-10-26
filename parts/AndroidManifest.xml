@@ -59,9 +59,5 @@
             android:exported="true">
         </service>
 
-        <service
-            android:name=".udfpsUtils.ScreenOffFingerprintService"
-            android:exported="true">
-        </service>
     </application>
 </manifest>

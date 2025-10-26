@@ -17,7 +17,6 @@ import android.view.Display.HdrCapabilities;
 
 import com.xiaomi.settings.display.ColorModeService;
 import com.xiaomi.settings.edgesuppression.EdgeSuppressionService;
-import com.xiaomi.settings.udfpsUtils.ScreenOffFingerprintService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
@@ -45,10 +44,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         // Touchscreen
         context.startServiceAsUser(new Intent(context, EdgeSuppressionService.class),
-                UserHandle.CURRENT);
-
-        // Screen Off Fingerprint
-        context.startServiceAsUser(new Intent(context, ScreenOffFingerprintService.class),
                 UserHandle.CURRENT);
     }
 }
