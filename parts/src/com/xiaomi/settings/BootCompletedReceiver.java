@@ -16,7 +16,6 @@ import android.view.Display;
 import android.view.Display.HdrCapabilities;
 
 import com.xiaomi.settings.display.ColorModeService;
-import com.xiaomi.settings.edgesuppression.EdgeSuppressionService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "XiaomiParts";
@@ -41,9 +40,5 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         displayManager.overrideHdrTypes(Display.DEFAULT_DISPLAY,
                 new int[] {HdrCapabilities.HDR_TYPE_DOLBY_VISION, HdrCapabilities.HDR_TYPE_HDR10,
                         HdrCapabilities.HDR_TYPE_HLG, HdrCapabilities.HDR_TYPE_HDR10_PLUS});
-
-        // Touchscreen
-        context.startServiceAsUser(new Intent(context, EdgeSuppressionService.class),
-                UserHandle.CURRENT);
     }
 }
