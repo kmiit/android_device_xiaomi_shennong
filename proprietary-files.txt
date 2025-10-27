@@ -1640,31 +1640,8 @@ odm/firmware/evass.b16
 odm/firmware/evass.b17
 odm/firmware/evass.b18
 odm/firmware/evass.b19
-odm/firmware/evass-lt.b00
-odm/firmware/evass-lt.b01
-odm/firmware/evass-lt.b02
-odm/firmware/evass-lt.b03
-odm/firmware/evass-lt.b04
-odm/firmware/evass-lt.b05
-odm/firmware/evass-lt.b06
-odm/firmware/evass-lt.b07
-odm/firmware/evass-lt.b08
-odm/firmware/evass-lt.b09
-odm/firmware/evass-lt.b10
-odm/firmware/evass-lt.b11
-odm/firmware/evass-lt.b12
-odm/firmware/evass-lt.b13
-odm/firmware/evass-lt.b14
-odm/firmware/evass-lt.b15
-odm/firmware/evass-lt.b16
-odm/firmware/evass-lt.b17
-odm/firmware/evass-lt.b18
-odm/firmware/evass-lt.b19
-odm/firmware/evass-lt.mbn
-odm/firmware/evass-lt.mdt
 odm/firmware/evass.mbn
 odm/firmware/evass.mdt
-odm/firmware/evass-product.mk
 
 # Configstore
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
