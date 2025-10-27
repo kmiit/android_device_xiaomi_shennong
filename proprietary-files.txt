@@ -3116,14 +3116,7 @@ vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 
 # VPU firmware
-odm/firmware/vpu20_2v.mbn
-odm/firmware/vpu20_2v_unsigned.mbn
-odm/firmware/vpu20_4v.mbn
-odm/firmware/vpu20_4v_unsigned.mbn
-odm/firmware/vpu30_2v.mbn
-odm/firmware/vpu30_2v_unsigned.mbn
 odm/firmware/vpu33_4v.mbn
-odm/firmware/vpu33_4v_unsigned.mbn
 
 # Widevine DRM
 vendor/apex/com.google.android.widevine.nonupdatable.apex
