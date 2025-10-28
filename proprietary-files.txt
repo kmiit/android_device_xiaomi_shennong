@@ -1433,7 +1433,6 @@ odm/lib64/libSnpeHtpV73Stub.so
 odm/lib64/libSnpeHtpV75Stub.so
 odm/lib64/libSNPE.so
 odm/lib64/libsupermoon.so
-odm/lib64/libtensorflowlite_touch_c.so
 odm/lib64/libtfestriping.so
 odm/lib64/libtunningmemhook.so
 odm/lib64/libTrueSight.so;DISABLE_CHECKELF
@@ -3017,16 +3016,6 @@ vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
 vendor/etc/init/init.time_daemon.rc
 vendor/lib64/libtime_genoff.so
-
-# TouchFeature
-odm/bin/hw/vendor.xiaomi.hw.touchfeature-service
-odm/bin/toucheventcheck
-odm/etc/init.panel_info.sh
-odm/etc/init/vendor.xiaomi.hw.touchfeature-service.rc
-odm/etc/vintf/manifest/vendor.xiaomi.hw.touchfeature-service.xml
-odm/lib64/libtouchreport.so
-odm/lib64/libtouchsensor.so
-vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk_platform.so
 
 # Touchscreen firmware
 odm/firmware/synaptics_spi_shennong_00.img

@@ -64,7 +64,6 @@
 /(vendor|system/vendor)/bin/qrtr-lookup           u:object_r:vendor_qrtr_exec:s0
 
 # Touchfeature
-/dev/miev                                                   u:object_r:miev_device:s0
 /dev/xiaomi-touch                                           u:object_r:touchfeature_device:s0
 /sys/devices/virtual/touch/touch_dev/abnormal_event         u:object_r:sysfs_touch_hostprocess:s0
 /sys/devices/virtual/touch/touch_dev/enable_touch_raw       u:object_r:sysfs_touch_hostprocess:s0
@@ -77,9 +76,6 @@
 /sys/devices/virtual/touch/touch_dev/touch_log_level        u:object_r:sysfs_touch_hostprocess:s0
 /sys/devices/virtual/touch/touch_dev/touch_thp_(.*)         u:object_r:sysfs_touch_hostprocess:s0
 /sys/devices/virtual/touch/touch_dev/touch_vendor           u:object_r:sysfs_touch_hostprocess:s0
-/(vendor|odm)/etc/init.panel_info.sh                        u:object_r:vendor_touch_init_shell_exec:s0
-/(vendor|system/vendor|odm|vendor/odm)/bin/toucheventcheck  u:object_r:tpevent_exec:s0
-/(odm|vendor/odm|vendor|system/vendor)/bin/hw/vendor\.xiaomi\.hw\.touchfeature-service   u:object_r:hal_touchfeature_xiaomi_default_exec:s0
 
 # Wifi
 /data/vendor/mac_addr(/.*)? u:object_r:vendor_mac_vendor_data_file:s0

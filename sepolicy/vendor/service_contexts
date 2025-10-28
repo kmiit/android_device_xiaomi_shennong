@@ -21,6 +21,3 @@ vendor.xiaomi.hardware.aidl.tidaservice.ITidaService/default        u:object_r:h
 
 # Soter
 vendor.xiaomi.hardware.soterservice.ISoter/default                  u:object_r:vendor_hal_soteraidl_service:s0
-
-# TouchFeature
-vendor.xiaomi.hw.touchfeature.ITouchFeature/default                 u:object_r:hal_touchfeature_xiaomi_service:s0

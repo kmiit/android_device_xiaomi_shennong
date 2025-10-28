@@ -488,14 +488,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.xiaomi.hardware.touchfeature</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITouchFeature</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.xiaomi.hardware.vibratorfeature</name>
         <version>1.0</version>
         <interface>
@@ -524,13 +516,6 @@
         <version>1.0</version>
         <interface>
             <name>IMiwillService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.xiaomi.hw.touchfeature</name>
-        <interface>
-            <name>ITouchFeature</name>
             <instance>default</instance>
         </interface>
     </hal>

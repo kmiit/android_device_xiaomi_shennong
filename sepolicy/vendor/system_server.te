@@ -6,6 +6,3 @@ hal_client_domain(system_server, hal_dms)
 
 # Sysfs
 dontaudit system_server sysfs:file read;
-
-# Touchfeature
-allow system_server hal_touchfeature_xiaomi_default:binder call;

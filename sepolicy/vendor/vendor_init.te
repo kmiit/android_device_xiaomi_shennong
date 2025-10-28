@@ -1,5 +1,4 @@
 set_prop(vendor_init, vendor_thermal_normal_prop)
-set_prop(vendor_init, vendor_touchfeature_prop)
 set_prop(vendor_init, vendor_fp_prop)
 
 allow vendor_init sysfs:lnk_file setattr;
