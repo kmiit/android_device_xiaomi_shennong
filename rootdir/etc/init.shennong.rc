@@ -1,3 +1,7 @@
 # Log Manager
 on post-fs-data
     mkdir /data/vendor/bsplog 0775 system system
+
+# Touch
+on boot
+    write /sys/class/touch/touch_dev/enable_touch_raw 0
