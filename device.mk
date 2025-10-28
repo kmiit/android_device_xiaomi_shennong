@@ -269,7 +269,6 @@ PRODUCT_PACKAGES += \
     XiaomiParts
 
 # Power
-$(call soong_config_set,qtipower,mode_ext_lib,libpowermode-ext-xiaomi)
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
 
