@@ -1,0 +1,21 @@
+[
+  {
+    "repository": "android_hardware_xiaomi",
+    "target_path": "hardware/xiaomi"
+  },
+  {
+    "repository": "kmiit/android_kernel_xiaomi_sm8650",
+    "target_path": "kernel/xiaomi/sm8650",
+    "remote": "github"
+  },
+  {
+    "repository": "kmiit/android_kernel_xiaomi_sm8650-devicetrees",
+    "target_path": "kernel/xiaomi/sm8650-devicetrees",
+    "remote": "github"
+  },
+  {
+    "repository": "kmiit/android_kernel_xiaomi_sm8650-modules",
+    "target_path": "kernel/xiaomi/sm8650-modules",
+    "remote": "github"
+  }
+]
