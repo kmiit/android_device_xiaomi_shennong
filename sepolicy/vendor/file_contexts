@@ -54,9 +54,6 @@
 /(odm|vendor/odm|vendor|system/vendor)/bin/mtd          u:object_r:hal_mtdservice_default_exec:s0
 /(odm|vendor/odm|vendor|system/vendor)/bin/tidad        u:object_r:hal_tidaservice_default_exec:s0
 
-# NFC
-/(odm|vendor/odm|vendor|system/vendor)/bin/hw/android\.hardware\.nqnfc-service\.nxp       u:object_r:hal_nfc_default_exec:s0
-
 # Perf
 /sys/kernel/reserve_pool(/.*)?                    u:object_r:sysfs_perf:s0
 

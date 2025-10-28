@@ -2334,51 +2334,10 @@ odm/lib64/libQnnSaver.so
 odm/lib64/libQnnSystem.so
 
 # NFC
-system_ext/etc/permissions/com.nxp.nfc.nq.xml
 odm/etc/libnfc-nci.conf
-odm/etc/libnfc-nxp_RF.conf
 odm/etc/libnfc-nxp.conf
-odm/bin/hw/android.hardware.nqnfc-service.nxp
-odm/etc/init/nfc-service-nxp.rc
-odm/lib64/nfc_nci.nqx.default.hw.so
-vendor/bin/pnscr
-vendor/bin/pnscr-mi
-vendor/bin/pnscr-rf
-vendor/bin/pnscr-sst
-vendor/bin/pnscr-v5
-vendor/etc/1-SN1X0_SPC.txt
-vendor/etc/libnfc-mtp-SN100_38_4MHZ.conf
-vendor/etc/libnfc-mtp-SN100.conf
-vendor/etc/libnfc-nxp-pnscr.conf
-vendor/etc/libnfc-qrd-SN100_38_4MHZ.conf
-vendor/etc/libnfc-qrd-SN100.conf
-vendor/etc/libnfc-SN220_19_2MHZ.conf
-vendor/etc/libnfc-SN220_38_4MHZ.conf
-vendor/etc/nfcon.pnscr
-vendor/etc/sn100u_bootup.pnscr
-vendor/etc/sn100u_ese_disableIso.pnscr
-vendor/etc/sn100u_ese_disableIsoRead.pnscr
-vendor/etc/sn100u_nfcon.pnscr
-vendor/etc/sn100u_pnx_chr.pnscr
-vendor/etc/sn100u_pnx_cui.pnscr
-vendor/etc/sn100u_pnx_ese_3_hce.pnscr
-vendor/etc/sn100u_pnx_ese_3.pnscr
-vendor/etc/sn100u_pnx_ese_aclog.pnscr
-vendor/etc/sn100u_pnx_ese_cplc.pnscr
-vendor/etc/sn100u_pnx_ese_fabkey.pnscr
-vendor/etc/sn100u_pnx_ese_free.pnscr
-vendor/etc/sn100u_pnx_ese_keyset.pnscr
-vendor/etc/sn100u_pnx_ese_sei2c_disable.pnscr
-vendor/etc/sn100u_pnx_ese_sei2c_enable.pnscr
-vendor/etc/sn100u_pnx_ese_sei2c_read.pnscr
-vendor/etc/sn100u_pnx_ese_sn.pnscr
-vendor/etc/sn100u_pnx_ndi.pnscr
-vendor/etc/sn100u_pnx_pcv.pnscr
-vendor/etc/sn100u_pnx_sst.pnscr
-vendor/lib64/libsn100u_fw.so
+odm/etc/libnfc-nxp_RF.conf
 vendor/lib64/libsn220u_fw.so
-vendor/lib64/libvui_dmgr.so
-vendor/lib64/vendor.nxp.hardware.nfc@2.0.so
 
 # OMX
 vendor/lib64/libAlacSwDec.so
@@ -2578,6 +2537,7 @@ vendor/lib64/libDcfHalQtiMutex.so
 vendor/lib64/libSensorsInterface.so
 vendor/lib64/libqape_oem_ext.so
 vendor/lib64/libqsh_ble_pb.so
+vendor/lib64/libvui_dmgr.so
 
 # QSEECOM
 vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service

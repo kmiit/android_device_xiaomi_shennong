@@ -234,7 +234,8 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    nqnfcinfo
+    android.hardware.nfc-service.nxp \
+    Tag
 
 PRODUCT_PACKAGES += \
     android.hardware.nfc.hce.prebuilt.xml \
