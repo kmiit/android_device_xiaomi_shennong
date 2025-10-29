@@ -63,6 +63,10 @@
 # Qrtr
 /(vendor|system/vendor)/bin/qrtr-lookup           u:object_r:vendor_qrtr_exec:s0
 
+# Strongbox
+/vendor/bin/hw/android\.hardware\.security\.keymint3?-service\.strongbox[-\.]nxp    u:object_r:vendor_hal_keymint_strongbox_exec:s0
+/vendor/bin/hw/android\.hardware\.weaver-service\.nxp(-qti)?                        u:object_r:vendor_hal_weaver_default_exec:s0
+
 # Touchfeature
 /dev/xiaomi-touch                                           u:object_r:touchfeature_device:s0
 /sys/devices/virtual/touch/touch_dev/abnormal_event         u:object_r:sysfs_touch_hostprocess:s0

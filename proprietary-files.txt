@@ -2806,6 +2806,7 @@ vendor/lib64/libminksocket_vendor.so
 vendor/lib64/libnative-api.so
 
 # Secure element
+vendor/etc/hal_uuid_map_shennong.xml
 vendor/bin/hw/android.hardware.secure_element-service.qti
 vendor/etc/init/android.hardware.secure_element-service.qti.rc
 vendor/etc/permissions/com.android.se.xml
