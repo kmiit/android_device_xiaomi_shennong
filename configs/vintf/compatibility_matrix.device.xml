@@ -64,6 +64,8 @@
         <interface>
             <name>IConfigurable</name>
             <instance>default</instance>
+            <instance>default1</instance>
+            <instance>default2</instance>
             <instance>software</instance>
         </interface>
     </hal>
