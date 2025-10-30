@@ -1925,13 +1925,6 @@ vendor/etc/init/vendor.rongcard.eid@1.0-service.rc
 vendor/etc/vintf/manifest/eid-default.xml
 vendor/lib64/vendor.rongcard.eid-V1-ndk_platform.so
 
-# EMBMS
-vendor/bin/embmsslServer
-vendor/etc/init/init.embmssl_server.rc
-vendor/etc/vintf/manifest/vendor.qti.hardware.embmssl.xml
-vendor/lib64/libembmsservice.so
-vendor/lib64/vendor.qti.hardware.embmsslaidl-V1-ndk.so
-
 # Fingerprint
 odm/etc/vintf/manifest/fod-aidl.xml
 odm/lib64/hw/fingerprint.goodix_fod.so
