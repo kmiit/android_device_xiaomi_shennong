@@ -267,10 +267,6 @@ PRODUCT_PACKAGES += \
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Parts
-PRODUCT_PACKAGES += \
-    XiaomiParts
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
