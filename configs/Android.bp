@@ -20,7 +20,6 @@ prebuilt_etc {
 prebuilt_etc {
     name: "device_vendor_audio_config",
     srcs: [
-        "audio/audio_policy_configuration.xml",
         "audio/bluetooth_qti_hearing_aid_audio_policy_configuration.xml",
         "audio/microphone_characteristics.xml",
         "audio/usecaseKvManager.xml",
