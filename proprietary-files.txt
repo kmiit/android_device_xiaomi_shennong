@@ -2505,7 +2505,6 @@ vendor/bin/qsap_dcfd
 vendor/bin/qsap_location
 vendor/bin/qsap_qapeservice
 vendor/bin/qsap_sensors
-vendor/bin/qsap_voiceui
 vendor/etc/init/dcfd.rc
 vendor/etc/init/vendor.qsap.location.rc
 vendor/etc/init/vendor.qsap.qapeservice.rc
@@ -2513,14 +2512,12 @@ vendor/etc/init/vendor.qsap.sensors.rc
 vendor/etc/seccomp_policy/qsap_dcfd.policy
 vendor/etc/seccomp_policy/qsap_qapeservice.policy
 vendor/etc/seccomp_policy/qsap_sensors.policy
-vendor/etc/seccomp_policy/qsap_voiceui.policy
 vendor/lib64/libDcfHalFramework.so
 vendor/lib64/libDcfHalLogger.so
 vendor/lib64/libDcfHalQtiMutex.so
 vendor/lib64/libSensorsInterface.so
 vendor/lib64/libqape_oem_ext.so
 vendor/lib64/libqsh_ble_pb.so
-vendor/lib64/libvui_dmgr.so
 
 # QSEECOM
 vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
