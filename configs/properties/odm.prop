@@ -24,6 +24,9 @@ ro.product.marketname=Xiaomi 14 Pro
 # Qti
 ro.vendor.qti.va_odm.support=1
 
+# SSR
+persist.vendor.ssr.restart_level=ALL_ENABLE
+
 # USB
 vendor.usb.product_string=Xiaomi 14 Pro
 
