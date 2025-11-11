@@ -2866,7 +2866,6 @@ vendor/lib64/vendor.qti.hardware.sensorscalibrate-V1-ndk.so
 
 # Soter
 product/app/SoterService/SoterService.apk
-vendor/bin/vendor.qti.hardware.soter-provision
 vendor/bin/hw/vendor.qti.hardware.soter-service
 vendor/etc/init/vendor.qti.hardware.soter-service.rc
 vendor/etc/vintf/manifest/vendor.qti.hardware.soter-service.xml
