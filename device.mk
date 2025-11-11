@@ -222,7 +222,6 @@ PRODUCT_PACKAGES += \
 
 # Mount point
 PRODUCT_PACKAGES += \
-    product_vm-system_mountpoint \
     vendor_bt_firmware_mountpoint \
     vendor_dsp_mountpoint \
     vendor_firmware_mnt_mountpoint \

@@ -2999,11 +2999,6 @@ vendor/lib64/libubwcp.so
 vendor/lib64/libvideooptfeature.so
 vendor/lib64/libvideotxr.so
 
-# VM mgr
-vendor/bin/vmmgr
-vendor/etc/init/vmmgr.rc
-vendor/etc/vmmgr.conf
-
 # VPP
 vendor/bin/hw/qconfigservice
 vendor/bin/vppservice
