@@ -16,3 +16,9 @@ BOARD_SUPER_PARTITION_SIZE := 8321499136
 
 # Include the common OEM chipset BoardConfig.
 include device/xiaomi/sm8650-common/BoardConfigCommon.mk
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+	cs35l43_dlkm.ko \
+	goodix_fod.ko \
+	gpio-jingshang.ko \
+	synaptics_tcm2.ko
