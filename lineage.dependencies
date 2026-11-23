@@ -1,0 +1,6 @@
+[
+  {
+    "repository": "kmiit/android_device_xiaomi_sm8650-common",
+    "target_path": "device/xiaomi/sm8650-common"
+  }
+]
